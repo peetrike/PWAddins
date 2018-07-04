@@ -13,9 +13,9 @@ Set-StrictMode -Version Latest
 
 Write-Verbose "Initializing module PWAddins"
 
-. $psScriptRoot\remove-alias.ps1
 . $psScriptRoot\measure-history.ps1
-
-new-alias howlong measure-history
+. $psScriptRoot\remove-alias.ps1
+. $psScriptRoot\start-asadmin.ps1
+. $psScriptRoot\Test-IsAdmin.ps1
 
 #Export-ModuleMember -Function * -Alias * -Variable *
