@@ -1,16 +1,16 @@
 # function: remove-alias - remove an alias from the shell
 function remove-alias
 {
-  param ($AliasToRemove = $null)
-  if ($AliasToRemove) 
+  param ($Name = $null)
+  if ($Name)
   {
-    if (test-path Alias:$AliasToRemove)
+    if (test-path Alias:$Name)
     {
-      remove-item alias:$AliasToRemove
+      remove-item alias:$Name
     }
     else
     {
-      "Alias $AliasToRemove does not exist."
+      write-warning -Message "Alias $Name does not exist."
     }
   }
 }
