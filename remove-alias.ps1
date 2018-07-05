@@ -1,4 +1,4 @@
-function remove-alias {
+function Remove-Alias {
     <#
         .SYNOPSIS
         Remove an alias from the shell
