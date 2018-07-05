@@ -30,15 +30,21 @@ function Measure-History {
                 ValueFromPipelineByPropertyName
             )]
             [ValidateNotNullOrEmpty()]
-            [string]
-            #
+            [Int64]
         $Id = $MyInvocation.HistoryId - 1
     )
 
-    $historyToMeasure = get-history -Id $Id
+    Process {
+        $CallerErrorActionPreference = $ErrorActionPreference
+        try {
+            $historyToMeasure = Get-History -Id $Id -ErrorAction Stop
 
-    #$historyToMeasure.endexecutiontime.subtract($historyToMeasure.startexecutiontime).totalseconds
-    New-TimeSpan -Start $historyToMeasure.startexecutiontime -End $historyToMeasure.endexecutiontime
+            #$historyToMeasure.endexecutiontime.subtract($historyToMeasure.startexecutiontime).totalseconds
+            New-TimeSpan -Start $historyToMeasure.StartExecutionTime -End $historyToMeasure.EndExecutionTime
+        } catch {
+            Write-Error -ErrorRecord $_ -ErrorAction $CallerErrorActionPreference
+        }
+    }
 }
 
-new-alias howlong measure-history
+New-Alias -Name howlong -Value Measure-History
