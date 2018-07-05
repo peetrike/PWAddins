@@ -13,6 +13,7 @@ Set-StrictMode -Version Latest
 
 Write-Verbose "Initializing module PWAddins"
 
+. $psScriptRoot\get-osversion.ps1
 . $psScriptRoot\measure-history.ps1
 . $psScriptRoot\remove-alias.ps1
 . $psScriptRoot\start-asadmin.ps1
