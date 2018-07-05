@@ -20,7 +20,7 @@ function Start-AsAdmin {
 
     param (
             [Parameter(
-                Mandatory=$true,
+                Mandatory,
                 HelpMessage='Powershell commands to be started as admin'
             )]
             [ValidateNotNullorEmpty()]
@@ -31,8 +31,14 @@ function Start-AsAdmin {
         $WindowStyle = 'Hidden'
     )
 
-	$commandBytes = [Text.Encoding]::Unicode.GetBytes($command)
-	$encodedCommand = [Convert]::ToBase64String($commandBytes)
+	$commandBytes = [Text.Encoding]::Unicode.GetBytes($Command)
+    $encodedCommand = [Convert]::ToBase64String($commandBytes)
 
-	Start-Process -Verb RunAs -FilePath powershell.exe -ArgumentList "-ExecutionPolicy RemoteSigned -encodedcommand $encodedCommand" -Wait -WindowStyle $WindowStyle
+    $ProcessParams = @{
+        Verb = 'RunAs'
+        FilePath = 'powershell.exe'
+        WindowStyle = $WindowStyle
+        ArgumentList = "-ExecutionPolicy RemoteSigned -encodedcommand $encodedCommand"
+    }
+	Start-Process @ProcessParams -Wait
 }
