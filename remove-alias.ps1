@@ -1,16 +1,44 @@
-# function: remove-alias - remove an alias from the shell
-function remove-alias
-{
-  param ($Name = $null)
-  if ($Name)
-  {
-    if (test-path Alias:$Name)
-    {
-      remove-item alias:$Name
+function remove-alias {
+    <#
+        .SYNOPSIS
+        Remove an alias from the shell
+
+        .DESCRIPTION
+        The command removes alias from the current session.
+
+        .PARAMETER Name
+        Specifies the alias to be removed.  Wildcards are permitted.
+
+        .EXAMPLE
+        Remove-Alias -Name myalias
+
+        .EXAMPLE
+        Get-Alias test* | Remove-Alias
+
+        .LINK
+        Get-Alias
+        New-Alias
+        Set-Alias
+    #>
+
+    [CmdLetBinding(SupportsShouldProcess)]
+    Param (
+            [parameter(
+                Mandatory,
+                ValueFromPipelineByPropertyName
+            )]
+            [ValidateNotNullOrEmpty()]
+            [ValidateScript({
+                if (Get-Alias $_) {$true}
+                else {
+                    throw "Alias not found: $_"
+                }
+            })]
+            [String]
+        $Name
+    )
+
+    Process {
+        Remove-Item -Path Alias:$Name
     }
-    else
-    {
-      write-warning -Message "Alias $Name does not exist."
-    }
-  }
 }
