@@ -3,3 +3,6 @@ PWAddins*.zip
 
 #NuGet pakcages
 *.nupkg
+
+# Release folder for build process
+Release/*
