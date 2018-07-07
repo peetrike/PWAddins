@@ -1,3 +1,4 @@
+#Requires -Module psake
 <#
     ##############################################################################
     # PREVIEW VERSION OF PSAKE SCRIPT FOR MODULE BUILD & PUBLISH TO THE PSGALLERY
@@ -149,7 +150,7 @@ Task PublishImpl -depends Test -requiredVariables EncryptedApiKeyPath, PublishDi
     }
 
     "Calling Publish-Module..."
-    Publish-Module @publishParams -WhatIf
+    Publish-Module @publishParams # -WhatIf
 }
 
 Task Test -depends Build {
