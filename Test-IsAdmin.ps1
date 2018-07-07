@@ -4,7 +4,7 @@
     Tells whether the current user is an administrator.
 
     .Description
-    The Test-IsAdmin function determines whether the current user is a member of the 
+    The Test-IsAdmin function determines whether the current user is a member of the
     Administrators group on the local computer.
     It returns TRUE if a user is an administrator and FALSE otherwise.
     This function has no parameters.
@@ -20,13 +20,14 @@
     function prompt {
        if (Test-IsAdmin) { '[ADMIN]: ' }
        else {
-         $(if (test-path variable:/PSDebugContext) { '[DBG]: ' } 
+         $(if (test-path variable:/PSDebugContext) { '[DBG]: ' }
            else { '' }) + 'PS ' + $(Get-Location) + $(if ($nestedpromptlevel -ge 1) { '>>' }) + '> '
     }
 #>
 
     [CmdletBinding()]
-    param() 
+    param()
+
     $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
     ([Security.Principal.WindowsPrincipal] $currentUser).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 }

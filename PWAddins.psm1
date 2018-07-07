@@ -18,5 +18,6 @@ Write-Verbose "Initializing module PWAddins"
 . $psScriptRoot\remove-alias.ps1
 . $psScriptRoot\start-asadmin.ps1
 . $psScriptRoot\Test-IsAdmin.ps1
+. $psScriptRoot\update-localmodule.ps1
 
 #Export-ModuleMember -Function * -Alias * -Variable *
