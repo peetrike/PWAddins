@@ -1,1 +1,5 @@
+# github release file
 PWAddins*.zip
+
+#NuGet pakcages
+*.nupkg
