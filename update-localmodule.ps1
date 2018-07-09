@@ -3,8 +3,11 @@
 
 function Update-LocalModule {
     <#
+        .SYNOPSIS
+        Updates local modules from Powershell repository
+
         .DESCRIPTION
-        Get all local modules and check against new version in any Powershell Repository
+        Get all local modules and check against new version in any Powershell repository
     #>
 
     [CmdletBinding(SupportsShouldProcess)]
@@ -21,7 +24,6 @@ function Update-LocalModule {
             [ValidateNotNullOrEmpty()]
             [string[]]
         $Repository
-
     )
 
     Begin {
@@ -35,9 +37,9 @@ function Update-LocalModule {
             Select-Object -Property Name,Version
 
         foreach ($module in $modules) {
-            $installedModule = Get-InstalledModule -Name $module.Name -ErrorAction SilentlyContinue
-            if ($installedModule ) {
-                $installedModule | Update-Module
+            if (Get-InstalledModule -Name $module.Name -ErrorAction SilentlyContinue) {
+                Write-Verbose -Message ('Updating installed module {0}' -f $module.Name)
+                Update-Module -Name $module.Name
             } else {
                 $ParamSet = @{
                     Name = $module.Name
@@ -50,11 +52,15 @@ function Update-LocalModule {
                     Write-Verbose -Message ("module not found: {0}" -f $module.Name)
                     # continue
                 } elseif ([version]$ProposedModule.Version -gt $module.Version) {  # find-module returns version as string
+                    $CallerErrorActionPreference = $ErrorActionPreference
                     try {
-                        update-module @ParamSet -ErrorAction Stop
+                        Write-Verbose -Message (
+                            'Installing newer version of module {0} from repository {1}' -f $module.Name, $ProposedModule.Repository
+                        )
+                        Install-Module @ParamSet -ErrorAction Stop
                     }
                     catch {
-                        Install-Module @ParamSet -Force
+                        Write-Error -ErrorRecord $_ -ErrorAction $CallerErrorActionPreference
                     }
                 } else {
                     Write-Verbose -Message ("module already up to date: {0}" -f $module.Name )

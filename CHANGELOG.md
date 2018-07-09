@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
+## [1.3.1] 2018-07-09
+
+### Changed
+
+- changed Update-Localmodule
+
 ## [1.3.0] 2018-07-07
 
 ### Added
