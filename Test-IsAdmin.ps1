@@ -26,6 +26,7 @@
 #>
 
     [CmdletBinding()]
+    [OutputType([Boolean])]
     param()
 
     $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()

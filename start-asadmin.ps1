@@ -40,5 +40,5 @@ function Start-AsAdmin {
         WindowStyle = $WindowStyle
         ArgumentList = "-ExecutionPolicy RemoteSigned -encodedcommand $encodedCommand"
     }
-	Start-Process @ProcessParams -Wait
+    Start-Process @ProcessParams -Wait
 }
