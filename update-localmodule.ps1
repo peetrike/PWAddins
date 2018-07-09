@@ -34,7 +34,8 @@ function Update-LocalModule {
 
     Process {
         $modules = Get-Module -Name $Name -ListAvailable |
-            Select-Object -Property Name,Version
+            Select-Object -Property Name,Version |
+            Select-Object -Unique
 
         foreach ($module in $modules) {
             if (Get-InstalledModule -Name $module.Name -ErrorAction SilentlyContinue) {
