@@ -59,7 +59,7 @@ function Update-LocalModule {
                         Write-Verbose -Message (
                             'Installing newer version of module {0} from repository {1}' -f $module.Name, $ProposedModule.Repository
                         )
-                        Install-Module @ParamSet -ErrorAction Stop
+                        Install-Module @ParamSet -Force -ErrorAction Stop
                     }
                     catch {
                         Write-Error -ErrorRecord $_ -ErrorAction $CallerErrorActionPreference
