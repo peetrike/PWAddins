@@ -70,12 +70,12 @@
         {
             "label": "Clean",
             "type": "shell",
-            "command": "Invoke-PSake build.ps1 -taskList Clean"
+            "command": "Invoke-PSake build.psake.ps1 -taskList Clean"
         },
         {
             "label": "Build",
             "type": "shell",
-            "command": "Invoke-PSake build.ps1 -taskList Build",
+            "command": "./build.ps1",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -96,7 +96,7 @@
         {
             "label": "Publish",
             "type": "shell",
-            "command": "Invoke-PSake build.ps1 -taskList Publish"
+            "command": "Invoke-PSake build.psake.ps1 -taskList Publish"
         }
     ]
 }

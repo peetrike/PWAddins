@@ -1,6 +1,6 @@
 $projectRoot = "$PSScriptRoot/.."
 $moduleName = 'PWAddins'
-$manifestPath = "$projectRoot/$moduleName.psd1"
+$manifestPath = "$projectRoot/src/$moduleName.psd1"
 $manifest = Import-PowerShellDataFile -Path $manifestPath
 
 $changelogPath = Join-Path -Path $projectRoot -Child 'CHANGELOG.md'
