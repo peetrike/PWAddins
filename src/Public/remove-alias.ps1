@@ -1,26 +1,4 @@
 function Remove-Alias {
-    <#
-        .SYNOPSIS
-        Remove an alias from the shell
-
-        .DESCRIPTION
-        The command removes alias from the current session.
-
-        .PARAMETER Name
-        Specifies the alias to be removed.  Wildcards are permitted.
-
-        .EXAMPLE
-        Remove-Alias -Name myalias
-
-        .EXAMPLE
-        Get-Alias test* | Remove-Alias
-
-        .LINK
-        Get-Alias
-        New-Alias
-        Set-Alias
-    #>
-
     [CmdLetBinding(SupportsShouldProcess)]
     Param (
             [parameter(
@@ -34,6 +12,7 @@ function Remove-Alias {
                     throw "Alias not found: $_"
                 }
             })]
+            [SupportsWildcards()]
             [String]
         $Name
     )
