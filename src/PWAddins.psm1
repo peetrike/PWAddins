@@ -13,11 +13,15 @@ Set-StrictMode -Version Latest
 
 Write-Verbose "Initializing module PWAddins"
 
-. $psScriptRoot\get-osversion.ps1
-. $psScriptRoot\measure-history.ps1
-. $psScriptRoot\remove-alias.ps1
-. $psScriptRoot\start-asadmin.ps1
-. $psScriptRoot\Test-IsAdmin.ps1
-. $psScriptRoot\update-localmodule.ps1
+$Public  = @( Get-ChildItem -Path $PSScriptRoot\Public\*.ps1 -ErrorAction SilentlyContinue )
+$Private = @( Get-ChildItem -Path $PSScriptRoot\Private\*.ps1 -ErrorAction SilentlyContinue )
 
-#Export-ModuleMember -Function * -Alias * -Variable *
+#Dot source the files
+Foreach($import in @($Public + $Private)) {
+    Try {
+        . $import.fullname
+    }
+    Catch {
+        Write-Error -Message "Failed to import function $($import.fullname): $_"
+    }
+}
