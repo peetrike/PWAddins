@@ -67,7 +67,7 @@
 ###############################################################################
 Properties {
     # The name of your module should match the basename of the PSD1 file.
-    $ModuleName = (Get-ChildItem -Path $PSScriptRoot\*.psd1 -Recurse |
+    $ModuleName = (Get-ChildItem -Path $PSScriptRoot\src\*.psd1 -Recurse |
         Foreach-Object {$null = Test-ModuleManifest -Path $_ -ErrorAction SilentlyContinue; if ($?) {$_}})[0].BaseName
 
     # Path to the release notes file.  Set to $null if the release notes reside in the manifest file.
@@ -151,9 +151,10 @@ Task PublishImpl -depends Test -requiredVariables EncryptedApiKeyPath, PublishDi
     }
 
     # Consider not using -ReleaseNotes parameter when Update-ModuleManifest has been fixed.
-    if ($ReleaseNotesPath) {
+<#     if ($ReleaseNotesPath) {
         $publishParams['ReleaseNotes'] = @(Get-Content $ReleaseNotesPath)
     }
+ #>
 
     Write-Output -InputObject "Calling Publish-Module..."
     Publish-Module @publishParams
@@ -170,10 +171,10 @@ Task Build -depends Clean, Init -requiredVariables PublishDir, Exclude, ModuleNa
     # Get contents of the ReleaseNotes file and update the copied module manifest file
     # with the release notes.
     # DO NOT USE UNTIL UPDATE-MODULEMANIFEST IS FIXED - DOES NOT HANDLE SINGLE QUOTES CORRECTLY.
-    if ($ReleaseNotesPath) {
+<#     if ($ReleaseNotesPath) {
         $releaseNotes = @(Get-Content $ReleaseNotesPath)
         Update-ModuleManifest -Path $PublishDir\${ModuleName}.psd1 -ReleaseNotes $releaseNotes
-    }
+    } #>
 
     New-ExternalHelp -Path (Join-Path $PSScriptRoot Docs) -OutputPath (Join-Path $PublishDir en-US)
 }
