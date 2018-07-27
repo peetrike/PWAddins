@@ -23,13 +23,17 @@ The command removes alias from the current session.
 
 ### EXAMPLE 1
 ```
-Remove-Alias -Name myalias
+PS C:\> Remove-Alias -Name myalias
 ```
+
+This command removes alias named myalias
 
 ### EXAMPLE 2
 ```
-Get-Alias test* | Remove-Alias
+PS C:\> Get-Alias test* | Remove-Alias
 ```
+
+This command removes all aliases that will be found by pattern test*
 
 ## PARAMETERS
 
@@ -85,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.AliasInfo or None
+### System.Management.Automation.AliasInfo
 
 ## OUTPUTS
 

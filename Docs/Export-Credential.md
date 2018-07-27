@@ -26,18 +26,24 @@ You must also determine the name of saved credential
 
 ### EXAMPLE 1
 ```
-Get-Credential | Export-Credential -Name 'me@server'
+PS C:\> Get-Credential | Export-Credential -Name 'me@server'
 ```
+
+The command saves credential obtained from Get-Credential to file named me@server.xml
 
 ### EXAMPLE 2
 ```
-Export-Credential -Credential $MyCredential -Name 'me@server'
+PS C:\> Export-Credential -Credential $MyCredential -Name 'me@server'
 ```
+
+The command saves credential from variable $MyCredential to file named me@server.xml
 
 ### EXAMPLE 3
 ```
 [PSCustomObject] @{ Name = 'me@server' ; Credential = $MyCredential } | Export-Credential
 ```
+
+The command saves composed credential from pipeline to file named me@server.xml
 
 ## PARAMETERS
 

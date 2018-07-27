@@ -1,14 +1,17 @@
 
 # Taken with love from @juneb_get_help (https://raw.githubusercontent.com/juneb/PesterTDD/master/Module.Help.Tests.ps1)
 
-$manifestPath = "$PSScriptRoot/../src/pwaddins.psd1"
+$moduleName = 'PWAddins'
+$manifestPath = "$PSScriptRoot/../Release/$moduleName/$moduleName.psd1"
 $manifest = Import-PowerShellDataFile -Path $manifestPath
 
 # Get module commands
 # Remove all versions of the module from the session. Pester can't handle multiple versions.
-Remove-Module -Name psake -Force
+if (get-module $moduleName -ErrorAction SilentlyContinue) {
+    Remove-Module -Name $moduleName -Force
+}
 Import-Module -Name $manifestPath -Force -Verbose:$false -ErrorAction Stop
-$commands = Get-Command -Module psake -CommandType Cmdlet, Function, Workflow  # Not alias
+$commands = Get-Command -Module $moduleName -CommandType Cmdlet, Function, Workflow  # Not alias
 
 ## When testing help, remember that help is cached at the beginning of each session.
 ## To test, restart session.

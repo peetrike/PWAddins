@@ -25,21 +25,23 @@ This function has no parameters.
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
-Test-IsAdmin
+```powershell
+PS C:\> Test-IsAdmin
 ```
 
-```Output
+```output
 False
 ```
 
+This command tests if administrative privileges are available.
+
 ### EXAMPLE 2
 ```Powershell
-function prompt {
-  if (Test-IsAdmin) { '\[ADMIN\]: ' }
-  else {
-    $(if (test-path variable:/PSDebugContext) { '\[DBG\]: ' }
-      else { '' }) + 'PS ' + $(Get-Location) + $(if ($nestedpromptlevel -ge 1) { '\>\>' }) + '\> '
+PS C:\> function prompt {
+          if (Test-IsAdmin) { '\[ADMIN\]: ' }
+          else {
+            $(if (test-path variable:/PSDebugContext) { '\[DBG\]: ' }
+              else { '' }) + 'PS ' + $(Get-Location) + $(if ($nestedpromptlevel -ge 1) { '\>\>' }) + '\> '
 }
 ```
 

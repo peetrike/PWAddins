@@ -23,8 +23,10 @@ This function imports credential object from a file.
 
 ### EXAMPLE 1
 ```
-$MyCredential = Import-Credential -Name 'Me@server'
+PS C:\> $MyCredential = Import-Credential -Name 'Me@server'
 ```
+
+This command saves credential from file Me@server.xml to variable $MyCredential
 
 ## PARAMETERS
 

@@ -23,8 +23,10 @@ Runs given Powershell commands in elevated environment.
 
 ### EXAMPLE 1
 ```
-Start-AsAdmin -Command "Update-Help"
+PS C:\> Start-AsAdmin -Command "Update-Help"
 ```
+
+This command starts string "Update-Help" in separate process with administrative rights.
 
 ## PARAMETERS
 

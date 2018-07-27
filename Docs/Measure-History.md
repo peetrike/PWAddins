@@ -23,13 +23,17 @@ This command takes an item form history and calculates the execution time.
 
 ### EXAMPLE 1
 ```
-Measure-History -Id 3
+PS C:\> Measure-History -Id 3
 ```
+
+This command measures runtime of history item in psoition 3
 
 ### EXAMPLE 2
 ```
-Get-History -ID 3 | Measure-History
+PS C:\> Get-History -ID 3 | Measure-History
 ```
+
+This command measures runtime of history item in psoition 3
 
 ## PARAMETERS
 
