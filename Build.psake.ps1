@@ -174,6 +174,8 @@ Task Build -depends Clean, Init -requiredVariables PublishDir, Exclude, ModuleNa
         $releaseNotes = @(Get-Content $ReleaseNotesPath)
         Update-ModuleManifest -Path $PublishDir\${ModuleName}.psd1 -ReleaseNotes $releaseNotes
     }
+
+    New-ExternalHelp -Path (Join-Path $PSScriptRoot Docs) -OutputPath (Join-Path $PublishDir en-US)
 }
 
 Task Clean -requiredVariables PublishRootDir {
