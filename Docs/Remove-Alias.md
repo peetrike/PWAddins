@@ -23,18 +23,22 @@ The command removes alias from the current session.
 
 ### EXAMPLE 1
 ```
-Remove-Alias -Name myalias
+PS C:\> Remove-Alias -Name myalias
 ```
+
+This command removes alias named myalias
 
 ### EXAMPLE 2
 ```
-Get-Alias test* | Remove-Alias
+PS C:\> Get-Alias test* | Remove-Alias
 ```
+
+This command removes all aliases that will be found by pattern test*
 
 ## PARAMETERS
 
 ### -Name
-Specifies the alias to be removed. 
+Specifies the alias to be removed.
 Wildcards are permitted.
 
 ```yaml
@@ -85,13 +89,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.Management.Automation.AliasInfo
+
 ## OUTPUTS
+
+### None
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-Alias
-New-Alias
-Set-Alias]()
+[Get-Alias](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-alias)
 
+[New-Alias](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-alias)
+
+[Set-Alias](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/set-alias)

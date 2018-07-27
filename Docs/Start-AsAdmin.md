@@ -23,8 +23,10 @@ Runs given Powershell commands in elevated environment.
 
 ### EXAMPLE 1
 ```
-Start-AsAdmin -Command "Update-Help"
+PS C:\> Start-AsAdmin -Command "Update-Help"
 ```
+
+This command starts string "Update-Help" in separate process with administrative rights.
 
 ## PARAMETERS
 
@@ -68,3 +70,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Start-Process](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process)
+
+[Test-IsAdmin](Test-IsAdmin.md)

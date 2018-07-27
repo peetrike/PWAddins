@@ -1,26 +1,18 @@
 # Requires -RunAsAdministrator
-#Requires -Module PowerShellGet
+#Requires -Modules PowerShellGet
 
 function Update-LocalModule {
-    <#
-        .SYNOPSIS
-        Updates local modules from Powershell repository
-
-        .DESCRIPTION
-        Get all local modules and check against new version in any Powershell repository
-    #>
-
+    # .EXTERNALHELP PWAddins-help.xml
     [CmdletBinding(SupportsShouldProcess)]
     Param (
-            # Module name(s) to be checked
             [parameter(
                 ValueFromPipeline,
                 ValueFromPipelineByPropertyName
             )]
             [ValidateNotNullOrEmpty()]
+            [SupportsWildcards()]
             [string[]]
         $Name = "*",
-            # Repository to search modules from
             [ValidateNotNullOrEmpty()]
             [string[]]
         $Repository
@@ -69,6 +61,5 @@ function Update-LocalModule {
                 }
             }
         }
-
     }
 }

@@ -23,8 +23,10 @@ This function imports credential object from a file.
 
 ### EXAMPLE 1
 ```
-$MyCredential = Import-Credential -Name 'Me@server'
+PS C:\> $MyCredential = Import-Credential -Name 'Me@server'
 ```
+
+This command saves credential from file Me@server.xml to variable $MyCredential
 
 ## PARAMETERS
 
@@ -44,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Specifies the path where credentials are stored. 
+Specifies the path where credentials are stored.
 By default this is subfolder under Local Application Data
 
 ```yaml
@@ -60,8 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -75,6 +76,8 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## RELATED LINKS
 
-[export-credential
-get-credential]()
+[Export-Credential](Export-Credential.md)
 
+[get-credential](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential)
+
+[Securely Store Credentials on Disk](http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk)
