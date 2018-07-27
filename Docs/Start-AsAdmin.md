@@ -69,6 +69,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-Start-Process
+[Start-Process](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process)
 
 [Test-IsAdmin](Test-IsAdmin.md)

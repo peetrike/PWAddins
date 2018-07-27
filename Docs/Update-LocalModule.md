@@ -35,7 +35,6 @@ PS C:\> Get-Module myModule* -ListAvailable | Update-LocalModule
 
 Looks for modules with name pattern MyModule* and tries to find newer version from registered repositories
 
-
 ## PARAMETERS
 
 ### -Name
@@ -118,6 +117,6 @@ Admin permissions are required as if module requires reinstall, it will be insta
 
 ## RELATED LINKS
 
-Install-Module
+[Install-Module](https://docs.microsoft.com/en-us/powershell/module/powershellget/install-module)
 
-Update-Module
+[Update-Module](https://docs.microsoft.com/en-us/powershell/module/powershellget/update-module)

@@ -42,7 +42,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 0
+Position: 1
 Default value: $MyInvocation.HistoryId - 1
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -65,4 +65,4 @@ This command returns a measured history item execution time.
 
 ## RELATED LINKS
 
-Get-History
+[Get-History](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-history)

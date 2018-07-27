@@ -52,7 +52,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -67,7 +67,7 @@ Parameter Sets: (All)
 Aliases: FileName
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -83,7 +83,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 3
 Default value: (Join-Path -Path $env:LOCALAPPDATA -ChildPath 'Powershell')
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -107,8 +107,8 @@ Takes credential object from pipe.
 
 [Import-Credential](Import-Credential.md)
 
-Get-Credential
+[Get-Credential](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential)
 
-Export-CliXml
+[Export-CliXml](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml)
 
-[Securely Store Credentials on Disk] (http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk)
+[Securely Store Credentials on Disk](http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk)
