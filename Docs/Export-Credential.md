@@ -42,7 +42,7 @@ Export-Credential -Credential $MyCredential -Name 'me@server'
 ## PARAMETERS
 
 ### -Credential
-Specifies the Credential that will be saved. 
+Specifies the Credential that will be saved.
 Type a user name, such as User01
 or Domain01\User01, or enter a PSCredential object, such as one from the Get-Credential cmdlet.
 
@@ -52,7 +52,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -67,14 +67,14 @@ Parameter Sets: (All)
 Aliases: FileName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
 ### -Path
-Specify a path where the credential will be stored. 
+Specify a path where the credential will be stored.
 By default it is a subfolder in Local Application Data folder
 
 ```yaml
@@ -83,15 +83,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 2
 Default value: (Join-Path -Path $env:LOCALAPPDATA -ChildPath 'Powershell')
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -100,11 +99,16 @@ Takes credential object from pipe.
 
 ## OUTPUTS
 
+### None
+
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-Credential
-Export-CliXml
-Securely Store Credentials on Disk http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk]()
+[Import-Credential](Import-Credential.md)
 
+Get-Credential
+
+Export-CliXml
+
+[Securely Store Credentials on Disk] (http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk)

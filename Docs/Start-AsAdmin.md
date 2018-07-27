@@ -68,3 +68,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+Start-Process
+
+[Test-IsAdmin](Test-IsAdmin.md)

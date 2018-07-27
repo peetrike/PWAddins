@@ -17,7 +17,7 @@ Measure-History [[-Id] <Int64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This command takes an item form history and calculates the execution time
+This command takes an item form history and calculates the execution time.
 
 ## EXAMPLES
 
@@ -42,7 +42,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 0
 Default value: $MyInvocation.HistoryId - 1
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -53,6 +53,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.PowerShell.Commands.HistoryInfo or None
+This command can take history objects from pipeline.
+
 ## OUTPUTS
 
 ### System.Timespan
@@ -62,5 +65,4 @@ This command returns a measured history item execution time.
 
 ## RELATED LINKS
 
-[Get-History]()
-
+Get-History

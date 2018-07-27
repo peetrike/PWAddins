@@ -1,43 +1,4 @@
 function Export-Credential {
-    <#
-        .SYNOPSIS
-        Stores credential objects in .xml file
-
-        .DESCRIPTION
-        This function saves given credential to .xml file in predefined path.
-        The path is by default in Local Application Data folder.
-
-        You must also determine the name of saved credential
-
-        .PARAMETER Credential
-        Specifies the Credential that will be saved.  Type a user name, such as User01
-        or Domain01\User01, or enter a PSCredential object, such as one from the Get-Credential cmdlet.
-
-        .PARAMETER Name
-        Specify a name for stored credential.
-
-        .PARAMETER Path
-        Specify a path where the credential will be stored.  By default it is a subfolder in Local Application Data folder
-
-        .INPUTS
-        [PSCredential]
-        Takes credential object from pipe.
-
-        .EXAMPLE
-        Get-Credential | Export-Credential -Name 'me@server'
-
-        .EXAMPLE
-        Export-Credential -Credential $MyCredential -Name 'me@server'
-
-        .EXAMPLE
-        [PSCustomObject] @{ Name = 'me@server' ; Credential = $MyCredential } | Export-Credential
-
-        .LINK
-        Get-Credential
-        Export-CliXml
-        Securely Store Credentials on Disk http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk
-    #>
-
     param (
             [parameter(
                 Mandatory,

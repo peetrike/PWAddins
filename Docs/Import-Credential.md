@@ -37,14 +37,14 @@ Parameter Sets: (All)
 Aliases: FileName
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Path
-Specifies the path where credentials are stored. 
+Specifies the path where credentials are stored.
 By default this is subfolder under Local Application Data
 
 ```yaml
@@ -53,15 +53,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 1
 Default value: (Join-Path -Path $env:LOCALAPPDATA -ChildPath 'Powershell')
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -75,6 +74,8 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## RELATED LINKS
 
-[export-credential
-get-credential]()
+[Export-Credential](Export-Credential.md)
 
+get-credential
+
+[Securely Store Credentials on Disk] (http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk)

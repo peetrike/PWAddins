@@ -17,21 +17,29 @@ Update-LocalModule [[-Name] <String[]>] [[-Repository] <String[]>] [-WhatIf] [-C
 ```
 
 ## DESCRIPTION
-Get all local modules and check against new version in any Powershell repository
+Get local modules and check against new version in any Powershell repository.  If newer version is available, a newer version is installed.  If module is already installed from repository, it will be updated.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Update-LocalModule -Name MyModule*
 ```
 
-{{ Add example description here }}
+Looks for modules with name pattern MyModule* and tries to find newer version from registered repositories
+
+### Example 1
+```powershell
+PS C:\> Get-Module myModule* -ListAvailable | Update-LocalModule
+```
+
+Looks for modules with name pattern MyModule* and tries to find newer version from registered repositories
+
 
 ## PARAMETERS
 
 ### -Name
-Module name(s) to be checked
+Module name(s) to be checked.  Wildcards are allowed.
 
 ```yaml
 Type: String[]
@@ -46,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Repository
-Repository to search modules from
+Repositories to search modules from.
 
 ```yaml
 Type: String[]
@@ -96,8 +104,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.Management.Automation.PSModuleInfo, String or None
+
+This command can take moduleinfo from pipeline to process
+
 ## OUTPUTS
 
 ## NOTES
 
+Trying to check all locally installed modules might take a lot of time.
+
+Admin permissions are required as if module requires reinstall, it will be installed to AllUsers scope.
+
 ## RELATED LINKS
+
+Install-Module
+
+Update-Module
