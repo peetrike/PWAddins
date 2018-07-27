@@ -1,4 +1,4 @@
-#Requires -Module psake
+#Requires -Modules psake
 <#
     ##############################################################################
     # PREVIEW VERSION OF PSAKE SCRIPT FOR MODULE BUILD & PUBLISH TO THE PSGALLERY
