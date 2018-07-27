@@ -2,6 +2,7 @@
 #Requires -Modules PowerShellGet
 
 function Update-LocalModule {
+    # .EXTERNALHELP PWAddins-help.xml
     [CmdletBinding(SupportsShouldProcess)]
     Param (
             [parameter(

@@ -1,4 +1,5 @@
 function Export-Credential {
+    # .EXTERNALHELP PWAddins-help.xml
     param (
             [parameter(
                 Mandatory,

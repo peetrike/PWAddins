@@ -1,4 +1,5 @@
 function Start-AsAdmin {
+    # .EXTERNALHELP PWAddins-help.xml
     param (
             [Parameter(
                 Mandatory,

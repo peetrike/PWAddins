@@ -1,4 +1,5 @@
 function Measure-History {
+    # .EXTERNALHELP PWAddins-help.xml
     [CmdLetBinding() ]
     [OutputType([TimeSpan])]
     param (

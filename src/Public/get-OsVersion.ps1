@@ -1,6 +1,7 @@
 # Requires -Version 3
 # Requires -Modules CimCmdlets
 function Get-OsVersion {
+    # .EXTERNALHELP PWAddins-help.xml
     [CmdletBinding()]
     [OutputType([Version])]
     Param()

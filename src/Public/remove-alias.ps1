@@ -1,4 +1,5 @@
 function Remove-Alias {
+    # .EXTERNALHELP PWAddins-help.xml
     [CmdLetBinding(SupportsShouldProcess)]
     Param (
             [parameter(

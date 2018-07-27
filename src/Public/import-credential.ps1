@@ -1,4 +1,5 @@
 function Import-Credential {
+    # .EXTERNALHELP PWAddins-help.xml
     [OutputType('PSCredential')]
     param (
             [parameter(
