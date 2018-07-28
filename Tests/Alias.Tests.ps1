@@ -10,13 +10,8 @@ Import-Module -Name $manifestPath -Force -Verbose:$false -ErrorAction Stop
 
 $RequiredVersion = (Get-Module $ModuleName).Version
 
-if ($ExportedAliases = (Get-Module -ListAvailable -FullyQualifiedName @{ ModuleName = $ModuleName; RequiredVersion = $RequiredVersion }).ExportedAliases.Values.Name)
+if ($ExportedAliases = (Get-Module $ModuleName).ExportedAliases.Values.Name)
 {
-	# Remove all versions of the module from the session. Pester can't handle multiple versions.
-	Get-Module $ModuleName | Remove-Module
-
-	# Import the required version
-	Import-Module $ModuleName -RequiredVersion $RequiredVersion -ErrorAction Stop
 
 	foreach ($ExportedAlias in $ExportedAliases)
 	{

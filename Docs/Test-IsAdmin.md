@@ -1,7 +1,7 @@
 ---
 external help file: PWAddins-help.xml
 Module Name: PWAddins
-online version:
+online version: https://github.com/peetrike/PWAddins/blob/master/Docs/Test-IsAdmin.md
 schema: 2.0.0
 ---
 
