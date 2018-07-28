@@ -8,7 +8,7 @@ Locale: {{ Update Locale }}
 
 # PWAddins Module
 ## Description
-{{Manually Enter Description Here}}
+Various helper functions for everyday use
 
 ## PWAddins Cmdlets
 ### [Export-Credential](Export-Credential.md)
