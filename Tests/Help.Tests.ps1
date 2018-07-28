@@ -3,13 +3,12 @@
 
 $moduleName = 'PWAddins'
 $manifestPath = "$PSScriptRoot/../Release/$moduleName/$moduleName.psd1"
-$manifest = Import-PowerShellDataFile -Path $manifestPath
+# $manifest = Import-PowerShellDataFile -Path $manifestPath
 
 # Get module commands
 # Remove all versions of the module from the session. Pester can't handle multiple versions.
-if (get-module $moduleName -ErrorAction SilentlyContinue) {
-    Remove-Module -Name $moduleName -Force
-}
+Get-Module $moduleName | Remove-Module -Force
+
 Import-Module -Name $manifestPath -Force -Verbose:$false -ErrorAction Stop
 $commands = Get-Command -Module $moduleName -CommandType Cmdlet, Function, Workflow  # Not alias
 
@@ -76,12 +75,12 @@ foreach ($command in $commands) {
                 }
 
                 # Parameter type in Help should match code
-                # It "help for $commandName has correct parameter type for $parameterName" {
-                #     $codeType = $parameter.ParameterType.Name
-                #     # To avoid calling Trim method on a null object.
-                #     $helpType = if ($parameterHelp.parameterValue) { $parameterHelp.parameterValue.Trim() }
-                #     $helpType | Should be $codeType
-                # }
+                It "help for $commandName has correct parameter type for $parameterName" {
+                    $codeType = $parameter.ParameterType.Name
+                        # To avoid calling Trim method on a null object.
+                    $helpType = if ($parameterHelp.parameterValue) { $parameterHelp.parameterValue.Trim() }
+                    $helpType | Should be $codeType
+                }
             }
 
             foreach ($helpParm in $HelpParameterNames) {
