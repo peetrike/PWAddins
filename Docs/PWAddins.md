@@ -1,9 +1,9 @@
 ---
 Module Name: PWAddins
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: e2da415a-130b-4376-88d6-0d9b6cf8c807
+Download Help Link:
+Help Version: 1.4.1
+Locale: en-US
 ---
 
 # PWAddins Module
