@@ -17,20 +17,20 @@ if ($ExportedAliases = (Get-Module $ModuleName).ExportedAliases.Values.Name)
 
 	foreach ($ExportedAlias in $ExportedAliases)
 	{
-		Describe "Testing exported aliases" {
+		Describe "Testing exported alias $ExportedAlias" {
 
 			$script:AliasInSession = $null
 
-			It "Get-Alias should not error out: $ExportedAlias" {
+			It "Get-Alias should not error out" {
 				{ $script:AliasInSession = Get-Alias $ExportedAlias -ErrorAction Stop } | Should Not Throw
 			}
 
-			It "Get-Alias should find alias in session: $ExportedAlias" {
+			It "Get-Alias should find alias in session" {
 
 				$script:AliasInSession.Name | Should Be $ExportedAlias
 			}
 
-			It "Get-Alias should find value: $ExportedAlias" {
+			It "Get-Alias should find value" {
 
 				$script:AliasInSession.ResolvedCommandName -or $script:AliasInSession.Definition | Should Be $True
 			}
