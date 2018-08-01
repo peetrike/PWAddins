@@ -1,6 +1,9 @@
-$projectRoot = "$PSScriptRoot/.."
-$moduleName = 'PWAddins'
-$manifestPath = "$projectRoot/src/$moduleName.psd1"
+#Requires -Modules BuildHelpers, Pester
+
+$projectRoot = Split-Path -Path $PSScriptRoot -Parent
+$buildEnvironment = Get-BuildEnvironment -Path $projectRoot
+$moduleName = $buildEnvironment.ProjectName
+$manifestPath = $buildEnvironment.PSModuleManifest
 $manifest = Import-PowerShellDataFile -Path $manifestPath
 
 $changelogPath = Join-Path -Path $projectRoot -Child 'CHANGELOG.md'
