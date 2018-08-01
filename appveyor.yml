@@ -1,0 +1,44 @@
+# See http://www.appveyor.com/docs/appveyor-yml for many more options
+
+os: WMF 5
+
+skip_commits:
+  files:
+    - *.md
+
+install:
+  - ps: |
+      if (-not (Get-PackageProvider -Name NuGet)) {
+          $null = Install-PackageProvider -Name NuGet -Force
+      }
+      if ((Get-PSRepository -Name PSGallery).InstallationPolicy -ne 'Trusted') {
+          Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+      }
+      Install-Module Psake, PSDeploy, BuildHelpers -Force -AllowClobber -Scope CurrentUser
+      Install-Module Pester -MinimumVersion 4.4 -Force -AllowClobber -SkipPublisherCheck -Scope CurrentUser
+
+
+# to disable automatic builds
+# build: off
+
+build_script:
+  - ps: . .\Build.ps1
+
+test_script:
+  - ps: |
+      $TestFile =  Join-Path -Path $env:BHBuildOutput -ChildPath "testoutput.xml"
+      Invoke-Pester -OutputFormat NUnitXml -OutputFile $TestFile
+      (New-Object 'System.Net.WebClient').UploadFile(
+          "https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)",
+          $TestFile )
+
+
+#deploy:
+#  - provider: GitHub
+#    auth_token: $(GithubAuthToken)
+#    draft: true
+#    prerelease: false
+#    on:
+#      branch: master
+#      appveyor_repo_tag: true
+
