@@ -75,18 +75,19 @@ Properties {
 
     # Path to the release notes file.  Set to $null if the release notes reside in the manifest file.
     $ReleaseNotesName = 'CHANGELOG.md'
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $ReleaseNotesPath = "$PSScriptRoot\$ReleaseNotesName"
+        [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
+    $ReleaseNotesPath = Join-Path -Path $PSScriptRoot -ChildPath $ReleaseNotesName
+        [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
     $ManifestPath = $env:BHPSModuleManifest
 
     # The directory used to publish the module from.  If you are using Git, the
     # $PublishRootDir should be ignored if it is under the workspace directory.
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $PublishDir     = "$PublishRootDir\$ModuleName"
+    $PublishDir = Join-Path -Path $PublishRootDir -ChildPath $ModuleName
 
     # The following items will not be copied to the $PublishDir.
     # Add items that should not be published with the module.
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
     $Exclude = @(
         (Split-Path $PSCommandPath -Leaf),
         'Release',
@@ -106,9 +107,9 @@ Properties {
     # you publish you will be prompted to enter your API key.  The build will
     # store the key encrypted in a file, so that on subsequent publishes you
     # will no longer be prompted for the API key.
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
     $NuGetApiKey = 'LocalRepo'
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
     $EncryptedApiKeyPath = "$env:LOCALAPPDATA\powershell\$PublishRepository-NuGetApiKey.clixml"
 }
 
@@ -166,13 +167,19 @@ Task PublishImpl -depends Test -requiredVariables EncryptedApiKeyPath, PublishDi
 
 Task Test -depends Build {
     # Import-Module Pester
+    $TestFile =  Join-Path -Path $env:BHBuildOutput -ChildPath "testoutput.xml"
     $pesterParameters = @{
         Path         = "$ProjectRoot\Tests"
         PassThru     = $true
         OutputFormat = "NUnitXml"
-        OutputFile   = "$ProjectRoot\$TestFile"
+        OutputFile   = $TestFile
     }
     Invoke-Pester @pesterParameters
+    If ($ENV:BHBuildSystem -eq 'AppVeyor') {
+        (New-Object 'System.Net.WebClient').UploadFile(
+            "https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)",
+            $TestFile )
+    }
 }
 
 Task Build -depends Clean, Init -requiredVariables PublishDir, Exclude, ModuleName {
