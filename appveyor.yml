@@ -13,8 +13,7 @@ branches:
 
 skip_commits:
   files:
-    - README.md
-    - CHANGELOG.md
+    - '*.md'
 
 #---------------------------------#
 #    environment configuration    #
