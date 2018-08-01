@@ -69,7 +69,7 @@ test_script:
 
 artifacts:
   - path: Release\PWAddins
-  - type: zip
+  - type: Zip
 
 #deploy:
 #  - provider: GitHub
