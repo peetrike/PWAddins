@@ -1,12 +1,14 @@
-$ModuleName = 'PWAddins'
-$manifestPath = "$PSScriptRoot/../Release/$moduleName/$moduleName.psd1"
+#Requires -Modules BuildHelpers, Pester
+
+$projectRoot = Split-Path -Path $PSScriptRoot -Parent
+$buildEnvironment = Get-BuildEnvironment -Path $projectRoot -BuildOutput "$projectRoot\Release"
+$moduleName = $buildEnvironment.ProjectName
+$manifestPath = ("{0}\{1}\{1}.psd1" -f $buildEnvironment.BuildOutput, $moduleName)
+
 # Remove all versions of the module from the session. Pester can't handle multiple versions.
 Get-Module $moduleName | Remove-Module -Force
 
 Import-Module -Name $manifestPath -Force -Verbose:$false -ErrorAction Stop
-
-
-# Requires -Module @{ModuleName = 'Pester'; ModuleVersion = '3.4.0'}
 
 $RequiredVersion = (Get-Module $ModuleName).Version
 

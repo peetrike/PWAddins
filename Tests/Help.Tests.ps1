@@ -1,8 +1,11 @@
+#Requires -Modules BuildHelpers, Pester
 
-# Taken with love from @juneb_get_help (https://raw.githubusercontent.com/juneb/PesterTDD/master/Module.Help.Tests.ps1)
+# Taken with love from @juneb_get_help (https://www.github.com/juneb/PesterTDD/master/Module.Help.Tests.ps1)
 
-$moduleName = 'PWAddins'
-$manifestPath = "$PSScriptRoot/../Release/$moduleName/$moduleName.psd1"
+$projectRoot = Split-Path -Path $PSScriptRoot -Parent
+$buildEnvironment = Get-BuildEnvironment -Path $projectRoot -BuildOutput "$projectRoot\Release"
+$moduleName = $buildEnvironment.ProjectName
+$manifestPath = ("{0}\{1}\{1}.psd1" -f $buildEnvironment.BuildOutput, $moduleName)
 # $manifest = Import-PowerShellDataFile -Path $manifestPath
 
 # Get module commands
