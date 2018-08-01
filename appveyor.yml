@@ -67,7 +67,7 @@ test_script:
 #---------------------------------#
 
 artifacts:
-  - path: $(BHBuildOutput)
+  - path: Release/PWAddins
 #  - type: Zip
 
 #deploy:
