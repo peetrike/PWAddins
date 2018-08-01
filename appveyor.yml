@@ -9,9 +9,7 @@ skip_commits:
 
 install:
   - ps: |
-      if (-not (Get-PackageProvider -Name NuGet)) {
-          $null = Install-PackageProvider -Name NuGet -Force
-      }
+      Get-PackageProvider -Name NuGet -ForceBootstrap
       if ((Get-PSRepository -Name PSGallery).InstallationPolicy -ne 'Trusted') {
           Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
       }
