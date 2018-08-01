@@ -1,8 +1,11 @@
 # See http://www.appveyor.com/docs/appveyor-yml for many more options
 
-version: 1.4.{build}
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
 
-os: WMF 5
+# version format
+version: 1.4.{build}
 
 branches:
   only:
@@ -13,6 +16,17 @@ skip_commits:
     - README.md
     - CHANGELOG.md
 
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# Allow WMF5 (i.e. PowerShellGallery functionality)
+os: WMF 5
+
+# environment variables
+# environment:
+
+# scripts that run after cloning repository
 install:
   - ps: |
       $null = Get-PackageProvider -Name NuGet -ForceBootstrap
@@ -23,12 +37,23 @@ install:
       Install-Module Pester -MinimumVersion 4.4 -Force -AllowClobber -SkipPublisherCheck -Scope CurrentUser
 
 
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
 # to disable automatic builds
 # build: off
 
+# to run your custom scripts instead of automatic MSBuild
 build_script:
   - ps: . .\Build.ps1
 
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+# to run your custom scripts instead of automatic tests
 test_script:
   - ps: |
       $TestFile =  Join-Path -Path $env:BHBuildOutput -ChildPath "testoutput.xml"
@@ -37,9 +62,14 @@ test_script:
           "https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)",
           $TestFile )
 
-artifacts:
-  - path: release\PWAddins
-  - type: zip
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+#artifacts:
+#  - path: Release\PWAddins
+#  - type: Zip
 
 #deploy:
 #  - provider: GitHub
