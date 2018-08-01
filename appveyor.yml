@@ -1,6 +1,12 @@
 # See http://www.appveyor.com/docs/appveyor-yml for many more options
 
+version: 1.4.{build}
+
 os: WMF 5
+
+branches:
+  only:
+    - master
 
 skip_commits:
   files:
