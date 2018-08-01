@@ -15,7 +15,7 @@ skip_commits:
 
 install:
   - ps: |
-      Get-PackageProvider -Name NuGet -ForceBootstrap
+      $null = Get-PackageProvider -Name NuGet -ForceBootstrap
       if ((Get-PSRepository -Name PSGallery).InstallationPolicy -ne 'Trusted') {
           Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
       }
@@ -41,7 +41,7 @@ test_script:
 #deploy:
 #  - provider: GitHub
 #    auth_token: $(GithubAuthToken)
-#    draft: true
+#    draft: false
 #    prerelease: false
 #    on:
 #      branch: master
