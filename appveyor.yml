@@ -1,6 +1,12 @@
 # See http://www.appveyor.com/docs/appveyor-yml for many more options
 
+version: 1.4.{build}
+
 os: WMF 5
+
+branches:
+  only:
+    - master
 
 skip_commits:
   files:
@@ -9,13 +15,11 @@ skip_commits:
 
 install:
   - ps: |
-      if (-not (Get-PackageProvider -Name NuGet)) {
-          $null = Install-PackageProvider -Name NuGet -Force
-      }
+      $null = Get-PackageProvider -Name NuGet -ForceBootstrap
       if ((Get-PSRepository -Name PSGallery).InstallationPolicy -ne 'Trusted') {
           Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
       }
-      Install-Module Psake, PSDeploy, BuildHelpers -Force -AllowClobber -Scope CurrentUser
+      Install-Module Psake, PSDeploy, BuildHelpers, platyPS -Force -AllowClobber -Scope CurrentUser
       Install-Module Pester -MinimumVersion 4.4 -Force -AllowClobber -SkipPublisherCheck -Scope CurrentUser
 
 
@@ -33,11 +37,14 @@ test_script:
           "https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)",
           $TestFile )
 
+artifacts:
+  - path: release\PWAddins
+  - type: zip
 
 #deploy:
 #  - provider: GitHub
 #    auth_token: $(GithubAuthToken)
-#    draft: true
+#    draft: false
 #    prerelease: false
 #    on:
 #      branch: master
