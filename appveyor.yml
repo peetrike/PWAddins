@@ -68,7 +68,7 @@ test_script:
 
 artifacts:
   - path: $(BHBuildOutput)
-  - type: Zip
+#  - type: Zip
 
 #deploy:
 #  - provider: GitHub
