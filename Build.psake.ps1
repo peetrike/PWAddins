@@ -167,10 +167,10 @@ Task PublishImpl -depends Test -requiredVariables EncryptedApiKeyPath, PublishDi
 
 Task Test -depends Build {
     # Import-Module Pester
-    $TestFile =  Join-Path -Path $env:BHBuildOutput -ChildPath "testoutput.xml"
+    $TestFile = Join-Path -Path $env:BHBuildOutput -ChildPath "testoutput.xml"
     $pesterParameters = @{
-        Path         = "$ProjectRoot\Tests"
-        PassThru     = $true
+        # Path         = Join-Path -Path $env:BHProjectPath -ChildPath "Tests"
+        # PassThru     = $true
         OutputFormat = "NUnitXml"
         OutputFile   = $TestFile
     }
