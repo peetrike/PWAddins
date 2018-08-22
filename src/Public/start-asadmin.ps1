@@ -1,5 +1,6 @@
 function Start-AsAdmin {
     # .EXTERNALHELP PWAddins-help.xml
+    [CmdletBinding(SupportsShouldProcess)]
     param (
             [Parameter(
                 Mandatory,
@@ -22,5 +23,7 @@ function Start-AsAdmin {
         WindowStyle = $WindowStyle
         ArgumentList = "-ExecutionPolicy RemoteSigned -encodedcommand $encodedCommand"
     }
-    Start-Process @ProcessParams -Wait
+    if ($PSCmdlet.ShouldProcess('start as admin', $Command)) {
+        Start-Process @ProcessParams -Wait
+    }
 }
