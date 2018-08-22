@@ -25,3 +25,7 @@ Foreach($import in @($Public + $Private)) {
         Write-Error -Message "Failed to import function $($import.fullname): $_"
     }
 }
+
+foreach ($Function in $Public) {
+    Export-ModuleMember -Function $Function.BaseName
+}
