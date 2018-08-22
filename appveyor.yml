@@ -11,9 +11,14 @@ branches:
   only:
     - master
 
-skip_commits:
+#skip_commits:
+#  files:
+#    - '**/*.md'
+
+only_commits:
   files:
-    - '*.md'
+    - src/
+
 
 #---------------------------------#
 #    environment configuration    #
@@ -23,7 +28,9 @@ skip_commits:
 os: WMF 5
 
 # environment variables
-# environment:
+environment:
+  GithubAuthToken:
+    secure: wOVgzCOe1WC8W7wF1RfAsCS19jCVEIoYwqL+cQvW90O50JDaCGVIwmf9nN89uM8L
 
 # scripts that run after cloning repository
 install:
@@ -73,9 +80,8 @@ artifacts:
 #deploy:
 #  - provider: GitHub
 #    auth_token: $(GithubAuthToken)
-#    draft: false
+#    draft: true
 #    prerelease: false
 #    on:
-#      branch: master
-#      appveyor_repo_tag: true
-
+#      branch: master          # release from master branch only
+#      appveyor_repo_tag: true # deploy on tag push only
