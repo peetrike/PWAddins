@@ -11,9 +11,14 @@ branches:
   only:
     - master
 
-skip_commits:
+#skip_commits:
+#  files:
+#    - '**/*.md'
+
+only_commits:
   files:
-    - '*.md'
+    - src/
+
 
 #---------------------------------#
 #    environment configuration    #
