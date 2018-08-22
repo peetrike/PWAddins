@@ -39,7 +39,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -52,9 +52,10 @@ Makes elevated Powershell window visible or hidden
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Normal, Hidden
 
 Required: False
-Position: 2
+Position: 1
 Default value: Hidden
 Accept pipeline input: False
 Accept wildcard characters: False

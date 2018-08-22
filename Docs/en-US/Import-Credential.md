@@ -39,7 +39,7 @@ Parameter Sets: (All)
 Aliases: FileName
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -55,7 +55,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: 1
 Default value: (Join-Path -Path $env:LOCALAPPDATA -ChildPath 'Powershell')
 Accept pipeline input: False
 Accept wildcard characters: False
