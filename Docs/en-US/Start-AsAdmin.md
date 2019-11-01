@@ -13,7 +13,7 @@ Starts given PowerShell commands in elevated Powershell
 ## SYNTAX
 
 ```
-Start-AsAdmin [-Command] <String> [[-WindowStyle] <String>] [<CommonParameters>]
+Start-AsAdmin [-Command] <String> [[-WindowStyle] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,8 +22,8 @@ Runs given Powershell commands in elevated environment.
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
-PS C:\> Start-AsAdmin -Command "Update-Help"
+```powershell
+Start-AsAdmin -Command "Update-Help"
 ```
 
 This command starts string "Update-Help" in separate process with administrative rights.
@@ -39,7 +39,37 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -52,9 +82,10 @@ Makes elevated Powershell window visible or hidden
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Normal, Hidden
 
 Required: False
-Position: 2
+Position: 1
 Default value: Hidden
 Accept pipeline input: False
 Accept wildcard characters: False

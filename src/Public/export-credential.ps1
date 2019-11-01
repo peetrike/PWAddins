@@ -20,11 +20,13 @@ function Export-Credential {
         $Path = (Join-Path -Path $env:LOCALAPPDATA -ChildPath 'Powershell')
     )
 
-    process {
+    begin {
         if (-not (Test-Path -Path $Path)) {
             $null = New-Item -Path $Path -ItemType Directory -Force
         }
+    }
 
+    process {
         $FilePath = Join-Path -Path $Path -ChildPath ('{0}.xml' -f $Name)
 
         if (Test-Path -LiteralPath $FilePath) {
