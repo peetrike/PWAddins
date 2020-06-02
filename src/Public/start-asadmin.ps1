@@ -14,7 +14,7 @@ function Start-AsAdmin {
         $WindowStyle = 'Hidden'
     )
 
-	$commandBytes = [Text.Encoding]::Unicode.GetBytes($Command)
+    $commandBytes = [Text.Encoding]::Unicode.GetBytes($Command)
     $encodedCommand = [Convert]::ToBase64String($commandBytes)
 
     $ProcessParams = @{
