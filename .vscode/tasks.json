@@ -167,7 +167,7 @@
     {
       "label": "Test",
       "type": "shell",
-      "command": "Invoke-Pester -PesterOption @{IncludeVSCodeMarker=$true}",
+      "command": "Invoke-Pester",
       "group": {
         "kind": "test",
         "isDefault": true
