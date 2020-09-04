@@ -1,10 +1,11 @@
 function Start-AsAdmin {
     # .EXTERNALHELP PWAddins-help.xml
     [CmdletBinding(SupportsShouldProcess)]
+    [Alias('Invoke-AsAdmin')]
     param (
             [Parameter(
                 Mandatory,
-                HelpMessage='Powershell commands to be started as admin'
+                HelpMessage = 'Powershell commands to be started as admin'
             )]
             [ValidateNotNullorEmpty()]
             [String]
@@ -18,12 +19,12 @@ function Start-AsAdmin {
     $encodedCommand = [Convert]::ToBase64String($commandBytes)
 
     $ProcessParams = @{
-        Verb = 'RunAs'
-        FilePath = 'powershell.exe'
-        WindowStyle = $WindowStyle
-        ArgumentList = "-ExecutionPolicy RemoteSigned -encodedcommand $encodedCommand"
+        Verb         = 'RunAs'
+        FilePath     = (Get-Process -Id $PID).Path
+        WindowStyle  = $WindowStyle
+        ArgumentList = "-ExecutionPolicy RemoteSigned -EncodedCommand $encodedCommand"
     }
-    if ($PSCmdlet.ShouldProcess('start as admin', $Command)) {
+    if ($PSCmdlet.ShouldProcess($Command, 'start as admin')) {
         Start-Process @ProcessParams -Wait
     }
 }
