@@ -117,7 +117,7 @@ Properties {
     # you will be prompted to enter your API key.  The build will store the key encrypted in the
     # settings file, so that on subsequent publishes you will no longer be prompted for the API key.
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $NuGetApiKey = $null
+    $NuGetApiKey = 'ignored'
 
     # Name of the repository you wish to publish to. If $null is specified the default repo (PowerShellGallery) is used.
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
