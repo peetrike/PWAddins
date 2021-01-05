@@ -14,6 +14,12 @@ Various helper functions for everyday use
 ### [Export-Credential](Export-Credential.md)
 Stores credential objects in .xml file
 
+### [Get-Accelerator](Get-Accelerator.md)
+Get list of defined type accelerators
+
+### [Get-HostName](Get-HostName.md)
+Returns computer name or FQDN
+
 ### [Get-OsVersion](Get-OsVersion.md)
 Returns Operating System Version
 
@@ -21,10 +27,7 @@ Returns Operating System Version
 Imports previously saved credential
 
 ### [Invoke-WithCulture](Invoke-WithCulture.md)
-{{Fill in the Synopsis}}
-
-### [Measure-History](Measure-History.md)
-Measures the execution time of command from history
+Invoke ScriptBlock within specified culture scope.
 
 ### [Remove-Alias](Remove-Alias.md)
 Remove an alias from the shell

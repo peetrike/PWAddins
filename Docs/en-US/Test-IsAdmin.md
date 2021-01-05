@@ -8,6 +8,7 @@ schema: 2.0.0
 # Test-IsAdmin
 
 ## SYNOPSIS
+
 Tells whether the current user is an administrator.
 
 ## SYNTAX
@@ -17,6 +18,7 @@ Test-IsAdmin [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 The Test-IsAdmin function determines whether the current user is a member of the
 Administrators group on the local computer.
 It returns TRUE if a user is an administrator and FALSE otherwise.
@@ -25,8 +27,9 @@ This function has no parameters.
 ## EXAMPLES
 
 ### EXAMPLE 1
+
 ```powershell
-PS C:\> Test-IsAdmin
+Test-IsAdmin
 ```
 
 ```output
@@ -36,7 +39,8 @@ False
 This command tests if administrative privileges are available.
 
 ### EXAMPLE 2
-```Powershell
+
+```powershell
 PS C:\> function prompt {
           if (Test-IsAdmin) { '\[ADMIN\]: ' }
           else {
