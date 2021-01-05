@@ -57,7 +57,6 @@
         'Get-OsVersion'
         'Import-Credential'
         'Invoke-WithCulture'
-        'Measure-History'
         'Remove-Alias'
         'Start-AsAdmin'
         'Test-IsAdmin'
@@ -67,7 +66,6 @@
     CmdletsToExport = @()
     VariablesToExport = @()
     AliasesToExport = @(
-        'howlong'
         'Test-IsAdministrator'
         'Using-Culture'
     )
