@@ -87,7 +87,11 @@
             )
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            # Tags = @()
+            Tags = @(
+                'PSEdition_Core'
+                'PSEdition_Desktop'
+                'Windows'
+            )
 
             LicenseUri = 'https://github.com/peetrike/PWAddins/blob/master/LICENSE'
             ProjectUri = 'https://github.com/peetrike/PWAddins'
