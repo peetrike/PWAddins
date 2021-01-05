@@ -13,7 +13,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Get-Accelerator
+- Get-HostName
+- Invoke-WithCulture
 - Modified TypeData and FormatData for HistoryInfo
+
+### Changed
+
+- Start-AsAdmin
+  - now supports -Whatif and -Confirm
+  - now in PowerShell 7 starts `pwsh` as admin
 
 ## [1.4.1] 2018-07-27
 
