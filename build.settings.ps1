@@ -226,8 +226,8 @@ Task AfterInstall {
 
 # Executes before the Publish task.
 Task BeforePublish {
-    $archiveName = Join-Path -Path $PublishRootDir -ChildPath ("{0}_v{1}.zip" -f $ModuleName, $ModuleVersion)
-    Compress-Archive -Path $PublishDir -DestinationPath $archiveName
+    $archiveName = Join-Path -Path $OutDir -ChildPath ("{0}_v{1}.zip" -f $ModuleName, $ModuleVersion)
+    Compress-Archive -Path $ModuleOutDir -DestinationPath $archiveName
 }
 
 # Executes after the Publish task.
