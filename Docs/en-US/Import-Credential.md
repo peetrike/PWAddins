@@ -8,6 +8,7 @@ schema: 2.0.0
 # Import-Credential
 
 ## SYNOPSIS
+
 Imports previously saved credential
 
 ## SYNTAX
@@ -17,13 +18,15 @@ Import-Credential [-Name] <String> [[-Path] <Object>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 This function imports credential object from a file.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
-PS C:\> $MyCredential = Import-Credential -Name 'Me@server'
+
+```powershell
+$MyCredential = Import-Credential -Name 'Me@server'
 ```
 
 This command saves credential from file Me@server.xml to variable $MyCredential
@@ -31,6 +34,7 @@ This command saves credential from file Me@server.xml to variable $MyCredential
 ## PARAMETERS
 
 ### -Name
+
 Specifies the name of saved credential
 
 ```yaml
@@ -46,6 +50,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
+
 Specifies the path where credentials are stored.
 By default this is subfolder under Local Application Data
 
@@ -78,6 +83,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Export-Credential](Export-Credential.md)
 
-[get-credential](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential)
+[Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential)
 
 [Securely Store Credentials on Disk](http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk)
