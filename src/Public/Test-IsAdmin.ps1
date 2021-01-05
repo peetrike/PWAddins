@@ -8,3 +8,5 @@
     $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
     ([Security.Principal.WindowsPrincipal] $currentUser).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
 }
+
+Export-ModuleMember -Alias Test-IsAdministrator

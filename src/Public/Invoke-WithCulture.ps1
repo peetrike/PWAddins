@@ -1,4 +1,5 @@
 function Invoke-WithCulture {
+    [Alias('Using-Culture')]
     param(
             [Parameter(Mandatory=$true)]
             [System.Globalization.CultureInfo]
@@ -21,4 +22,4 @@ function Invoke-WithCulture {
     }
 }
 
-New-Alias -Name Using-Culture -Value Invoke-WithCulture
+Export-ModuleMember -Alias Using-Culture
