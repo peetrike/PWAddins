@@ -25,7 +25,9 @@ only_commits:
 #---------------------------------#
 
 # Allow WMF5 (i.e. PowerShellGallery functionality)
-os: WMF 5
+#os: WMF 5
+
+image: Visual Studio 2019
 
 # environment variables
 environment:
