@@ -1,14 +1,15 @@
 ---
 external help file: PWAddins-help.xml
 Module Name: PWAddins
-online version:
+online version: https://github.com/peetrike/PWAddins/blob/master/Docs/Invoke-WithCulture.md
 schema: 2.0.0
 ---
 
 # Invoke-WithCulture
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Invoke ScriptBlock within specified culture scope.
 
 ## SYNTAX
 
@@ -17,21 +18,23 @@ Invoke-WithCulture [-Culture] <CultureInfo> [-ScriptBlock] <ScriptBlock> [<Commo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+
+This function runs given scriptblock using specified culture context.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Invoke-WithCulture -Culture 'de-de' -ScriptBlock { Get-Date}
 ```
 
-{{ Add example description here }}
+Run `Get-Date` cmdlet using German culture info.
 
 ## PARAMETERS
 
 ### -Culture
-{{Fill Culture Description}}
+
+Specify culture to be used.
 
 ```yaml
 Type: CultureInfo
@@ -46,7 +49,8 @@ Accept wildcard characters: False
 ```
 
 ### -ScriptBlock
-{{Fill ScriptBlock Description}}
+
+Specify scriptblock to be invoked.
 
 ```yaml
 Type: ScriptBlock
@@ -61,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -70,6 +74,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.Object
+
+The invoked scriptblock results.
+
 ## NOTES
 
 ## RELATED LINKS

@@ -8,6 +8,7 @@ schema: 2.0.0
 # Remove-Alias
 
 ## SYNOPSIS
+
 Remove an alias from the shell
 
 ## SYNTAX
@@ -17,20 +18,23 @@ Remove-Alias [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 The command removes alias from the current session.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
-```
-PS C:\> Remove-Alias -Name myalias
+
+```powershell
+Remove-Alias -Name myalias
 ```
 
 This command removes alias named myalias
 
 ### EXAMPLE 2
-```
-PS C:\> Get-Alias test* | Remove-Alias
+
+```powershell
+Get-Alias test* | Remove-Alias
 ```
 
 This command removes all aliases that will be found by pattern test*
@@ -38,6 +42,7 @@ This command removes all aliases that will be found by pattern test*
 ## PARAMETERS
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -53,6 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 Specifies the alias to be removed.
 Wildcards are permitted.
 
@@ -69,6 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
@@ -85,11 +92,13 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.Management.Automation.AliasInfo
+
+Alias to be removed
 
 ## OUTPUTS
 
@@ -97,10 +106,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+This function is not required for PowerShell 7
+
 ## RELATED LINKS
 
-[Get-Alias](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-alias)
+[Get-Alias](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-alias)
 
-[New-Alias](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/new-alias)
+[New-Alias](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/new-alias)
 
-[Set-Alias](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/set-alias)
+[Set-Alias](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/set-alias)

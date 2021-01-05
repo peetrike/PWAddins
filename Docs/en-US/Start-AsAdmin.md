@@ -8,6 +8,7 @@ schema: 2.0.0
 # Start-AsAdmin
 
 ## SYNOPSIS
+
 Starts given PowerShell commands in elevated Powershell
 
 ## SYNTAX
@@ -17,11 +18,13 @@ Start-AsAdmin [-Command] <String> [[-WindowStyle] <String>] [-WhatIf] [-Confirm]
 ```
 
 ## DESCRIPTION
+
 Runs given Powershell commands in elevated environment.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
+
 ```powershell
 Start-AsAdmin -Command "Update-Help"
 ```
@@ -31,6 +34,7 @@ This command starts string "Update-Help" in separate process with administrative
 ## PARAMETERS
 
 ### -Command
+
 Powershell commands that require elevated environment
 
 ```yaml
@@ -76,6 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -WindowStyle
+
 Makes elevated Powershell window visible or hidden
 
 ```yaml
@@ -92,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

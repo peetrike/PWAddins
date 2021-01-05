@@ -92,7 +92,7 @@ Properties {
 
     # Enable/disable generation of a catalog (.cat) file for the module.
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $CatalogGenerationEnabled = $true
+    $CatalogGenerationEnabled = $false
 
     # Select the hash version to use for the catalog file: 1 for SHA1 (compat with Windows 7 and
     # Windows Server 2008 R2), 2 for SHA2 to support only newer Windows versions.
@@ -117,11 +117,11 @@ Properties {
     # you will be prompted to enter your API key.  The build will store the key encrypted in the
     # settings file, so that on subsequent publishes you will no longer be prompted for the API key.
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $NuGetApiKey = $null
+    $NuGetApiKey = 'ignored'
 
     # Name of the repository you wish to publish to. If $null is specified the default repo (PowerShellGallery) is used.
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $PublishRepository = $null
+    $PublishRepository = 'LocalRepo'
 
     # Path to the release notes file.  Set to $null if the release notes reside in the manifest file.
     # The contents of this file are used during publishing for the ReleaseNotes parameter.
@@ -226,8 +226,8 @@ Task AfterInstall {
 
 # Executes before the Publish task.
 Task BeforePublish {
-    $archiveName = Join-Path -Path $PublishRootDir -ChildPath ("{0}_v{1}.zip" -f $ModuleName, $ModuleVersion)
-    Compress-Archive -Path $PublishDir -DestinationPath $archiveName
+    $archiveName = Join-Path -Path $OutDir -ChildPath ("{0}_v{1}.zip" -f $ModuleName, $ModuleVersion)
+    Compress-Archive -Path $ModuleOutDir -DestinationPath $archiveName
 }
 
 # Executes after the Publish task.
