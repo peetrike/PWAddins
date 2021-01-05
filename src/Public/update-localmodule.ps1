@@ -20,7 +20,7 @@ function Update-LocalModule {
 
     Begin {
         if (-not (Test-IsAdmin)) {
-            throw "Admin presmission required"
+            throw "Admin permission required"
         }
     }
 
