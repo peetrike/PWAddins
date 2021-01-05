@@ -3,14 +3,14 @@
 # Generated on: 04.07.2018
 
 @{
-    RootModule = 'PWAddins.psm1'
-    ModuleVersion = '1.4.1'
+    RootModule        = 'PWAddins.psm1'
+    ModuleVersion     = '1.4.1'
 
-    GUID = 'e2da415a-130b-4376-88d6-0d9b6cf8c807'
-    Author = 'Peter Wawa'
+    GUID              = 'e2da415a-130b-4376-88d6-0d9b6cf8c807'
+    Author            = 'Peter Wawa'
     #CompanyName = 'Unknown'
-    Copyright = '(c) 2018 Peter Wawa. All rights reserved.'
-    Description = 'Various helper functions for everyday use'
+    Copyright         = '(c) 2018 Peter Wawa. All rights reserved.'
+    Description       = 'Various helper functions for everyday use'
 
     # Minimum version of the Windows PowerShell engine required by this module
     PowerShellVersion = '3.0'
@@ -32,7 +32,7 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules = @(
+    RequiredModules   = @(
         'PowerShellGet'
     )
 
@@ -65,9 +65,9 @@
         'Update-LocalModule'
     )
 
-    CmdletsToExport = @()
+    CmdletsToExport   = @()
     VariablesToExport = @()
-    AliasesToExport = @(
+    AliasesToExport   = @(
         'Test-IsAdministrator'
         'Using-Culture'
     )
@@ -82,24 +82,24 @@
     # FileList = @()
 
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
-    PrivateData = @{
+    PrivateData       = @{
         PSData = @{
             ExternalModuleDependencies = @(
                 'PowerShellGet'
             )
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags = @(
+            Tags                       = @(
                 'PSEdition_Core'
                 'PSEdition_Desktop'
                 'Windows'
             )
 
-            LicenseUri = 'https://github.com/peetrike/PWAddins/blob/master/LICENSE'
-            ProjectUri = 'https://github.com/peetrike/PWAddins'
+            LicenseUri                 = 'https://github.com/peetrike/PWAddins/blob/master/LICENSE'
+            ProjectUri                 = 'https://github.com/peetrike/PWAddins'
             # IconUri = ''
 
-            ReleaseNotes = 'https://github.com/peetrike/PWAddins/blob/master/CHANGELOG.md'
+            ReleaseNotes               = 'https://github.com/peetrike/PWAddins/blob/master/CHANGELOG.md'
         }
     }
 
