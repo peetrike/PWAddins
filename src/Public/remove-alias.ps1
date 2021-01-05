@@ -1,9 +1,11 @@
 function Remove-Alias {
     # .EXTERNALHELP PWAddins-help.xml
     [CmdLetBinding(SupportsShouldProcess)]
-    Param (
+    param (
             [parameter(
                 Mandatory,
+                Position = 0,
+                ValueFromPipeline,
                 ValueFromPipelineByPropertyName
             )]
             [ValidateNotNullOrEmpty()]
@@ -14,11 +16,19 @@ function Remove-Alias {
                 }
             })]
             [SupportsWildcards()]
-            [String]
-        $Name
+            [String[]]
+        $Name,
+            [switch]
+        $Force,
+            [string]
+        $Scope
     )
 
-    Process {
-        Remove-Item -Path Alias:$Name
+    process {
+        if ($PSVersionTable.PSVersion.Major -lt 6) {
+            Remove-Item -Path Alias:$Name -Force:$Force.IsPresent
+        } else {
+            Microsoft.PowerShell.Utility\Remove-Alias @PSBoundParameters
+        }
     }
 }
