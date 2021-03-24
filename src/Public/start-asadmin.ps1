@@ -10,8 +10,8 @@ function Start-AsAdmin {
             [ValidateNotNullorEmpty()]
             [String]
         $Command
-            , [ValidateSet('Normal', 'Hidden')]
-            [string]
+            ,
+            [Diagnostics.ProcessWindowStyle]
         $WindowStyle = 'Hidden'
     )
 
