@@ -68,6 +68,7 @@
     CmdletsToExport   = @()
     VariablesToExport = @()
     AliasesToExport   = @(
+        'Invoke-AsAdmin'
         'Test-IsAdministrator'
         'Using-Culture'
     )
