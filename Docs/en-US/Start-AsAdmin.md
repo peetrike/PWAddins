@@ -14,7 +14,8 @@ Starts given PowerShell commands in elevated Powershell
 ## SYNTAX
 
 ```
-Start-AsAdmin [-Command] <String> [[-WindowStyle] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-AsAdmin [-Command] <String> [[-WindowStyle] <ProcessWindowStyle>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +51,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -65,6 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
@@ -84,10 +87,10 @@ Accept wildcard characters: False
 Makes elevated Powershell window visible or hidden
 
 ```yaml
-Type: String
+Type: ProcessWindowStyle
 Parameter Sets: (All)
 Aliases:
-Accepted values: Normal, Hidden
+Accepted values: Normal, Hidden, Minimized, Maximized
 
 Required: False
 Position: 1

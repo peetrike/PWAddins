@@ -14,7 +14,7 @@ Remove an alias from the shell
 ## SYNTAX
 
 ```
-Remove-Alias [-Name] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-Alias [-Name] <String[]> [-Force] [-Scope <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,20 +57,64 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+
+Indicates that the cmdlet removes an alias, including aliases with the Option
+property set to ReadOnly.
+The Force parameter can't remove an alias with an Option property set to
+Constant.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 
 Specifies the alias to be removed.
 Wildcards are permitted.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: True
+```
+
+### -Scope
+
+Affects only the aliases in the specified scope. The default scope is Local.
+For more information, see [about_Scopes](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scopes).
+
+The acceptable values for this parameter are:
+
+- Global
+- Local
+- Script
+- A number relative to the current scope (0 through the number of scopes, where
+  0 is the current scope and 1 is its parent)
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: Local
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

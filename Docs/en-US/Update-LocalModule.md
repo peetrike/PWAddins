@@ -31,7 +31,8 @@ already installed from repository, it will be updated.
 Update-LocalModule -Name MyModule*
 ```
 
-Looks for modules with name pattern MyModule* and tries to find newer version from registered repositories
+Looks for modules with name pattern MyModule* and tries to find newer version
+from registered repositories.
 
 ### Example 2
 
@@ -39,7 +40,8 @@ Looks for modules with name pattern MyModule* and tries to find newer version fr
 Get-Module myModule* -ListAvailable | Update-LocalModule
 ```
 
-Looks for modules with name pattern MyModule* and tries to find newer version from registered repositories
+Looks for modules with name pattern MyModule* and tries to find newer version
+from registered repositories.
 
 ## PARAMETERS
 
@@ -72,7 +74,7 @@ Required: False
 Position: 0
 Default value: *
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Repository
@@ -115,7 +117,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Management.Automation.PSModuleInfo, String or None
 
-This command can take moduleinfo from pipeline to process
+This command can take moduleinfo objects from pipeline to process.
 
 ## OUTPUTS
 
