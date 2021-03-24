@@ -7,8 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+
+## [1.6.0] 2021-03-24
+
 ### Changed
 
+- Start-AsAdmin - changed parameter -WindowStyle type to _ProcessWindowStyle_
 - Remove-Alias - with `pwsh` use built-in cmdlet instead `Remove-Item`
 
 ## [1.5.0] 2021-01-05
