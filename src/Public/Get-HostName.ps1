@@ -12,7 +12,8 @@ function Get-HostName {
         $Fqdn
     )
 
+    $HostName = hostname.exe
     if ($Fqdn) {
-        ([Net.Dns]::GetHostByName($env:COMPUTERNAME)).HostName
-    } else { $env:COMPUTERNAME }
+        ([Net.Dns]::GetHostEntry($HostName)).HostName
+    } else { $HostName }
 }
