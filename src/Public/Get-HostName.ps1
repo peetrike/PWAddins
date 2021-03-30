@@ -1,6 +1,3 @@
-
-#Requires -Version 2.0
-
 function Get-HostName {
     # .EXTERNALHELP PWAddins-help.xml
     [CmdletBinding()]
@@ -12,7 +9,8 @@ function Get-HostName {
         $Fqdn
     )
 
+    $HostName = [net.dns]::GetHostName()
     if ($Fqdn) {
-        ([Net.Dns]::GetHostByName($env:COMPUTERNAME)).HostName
-    } else { $env:COMPUTERNAME }
+        ([Net.Dns]::GetHostEntry($HostName)).HostName
+    } else { $HostName }
 }
