@@ -48,10 +48,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 The version returned might sometimes be incorrect. Starting with Windows 8,
 the returned version has the same major and minor version numbers for all
-Windows platforms.  Unless te application is aware of newer windows versions and
-it declares that on app maifest (look at
-[Operating system version changes in Windows 8.1 and Windows Server 2012 R2](https://msdn.microsoft.com/windows/compatibility/operating-system-version-changes-in-windows-8-1)).
-And Powershell sometimes qualifies, and sometimes not.
+Windows platforms, unless te application is aware of newer windows versions and
+it declares that on app manifest (look at
+[Windows version check](https://docs.microsoft.com/windows/compatibility/windows-version-check)).
+And Powershell sometimes qualifies, sometimes not.
 
 ## RELATED LINKS
 
