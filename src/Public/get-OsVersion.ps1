@@ -6,6 +6,6 @@ function Get-OsVersion {
     [OutputType([Version])]
     Param()
 
-    [System.Environment]::OSVersion.Version
+    [Environment]::OSVersion.Version
 #    [Version] (Get-CimInstance -ClassName Win32_OperatingSystem -Property Version).Version
 }
