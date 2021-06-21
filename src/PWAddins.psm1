@@ -11,7 +11,7 @@
 #>
 # Set-StrictMode -Version Latest
 
-Write-Verbose "Initializing module PWAddins"
+Write-Verbose 'Initializing module PWAddins'
 
 $Public  = @( Get-ChildItem -Path $PSScriptRoot\Public\*.ps1 -ErrorAction SilentlyContinue )
 $Private = @( Get-ChildItem -Path $PSScriptRoot\Private\*.ps1 -ErrorAction SilentlyContinue )
@@ -21,7 +21,7 @@ foreach ($import in @($Public + $Private)) {
     try {
         . $import.FullName
     } catch {
-        Write-Error -Message ("Failed to import function {0}: {1}" -f $import.FullName, $_)
+        Write-Error -Message ('Failed to import function {0}: {1}' -f $import.FullName, $_)
     }
 }
 

@@ -15,8 +15,7 @@ function Invoke-WithCulture {
         [System.Threading.Thread]::CurrentThread.CurrentCulture = $culture
         [System.Threading.Thread]::CurrentThread.CurrentUICulture = $culture
         Invoke-Command $ScriptBlock
-    }
-    finally {
+    } finally {
         [System.Threading.Thread]::CurrentThread.CurrentCulture = $OldCulture
         [System.Threading.Thread]::CurrentThread.CurrentUICulture = $OldUICulture
     }

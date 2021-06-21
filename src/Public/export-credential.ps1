@@ -36,8 +36,7 @@ function Export-Credential {
         $CallerErrorActionPreference = $ErrorActionPreference
         try {
             $Credential | Export-Clixml -Path $FilePath
-        }
-        catch {
+        } catch {
             Write-Error -ErrorRecord $_ -ErrorAction $CallerErrorActionPreference
         }
         Write-Verbose -Message ('Credential for {0} has been saved' -f $name)

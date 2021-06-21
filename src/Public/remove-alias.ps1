@@ -9,8 +9,8 @@ function Remove-Alias {
                 ValueFromPipelineByPropertyName
             )]
             [ValidateNotNullOrEmpty()]
-            [ValidateScript({
-                if (Get-Alias $_) {$true}
+            [ValidateScript( {
+                if (Get-Alias $_) { $true }
                 else {
                     throw "Alias not found: $_"
                 }

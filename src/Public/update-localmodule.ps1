@@ -12,7 +12,7 @@ function Update-LocalModule {
             [ValidateNotNullOrEmpty()]
             [SupportsWildcards()]
             [string[]]
-        $Name = "*",
+        $Name = '*',
             [ValidateNotNullOrEmpty()]
             [string[]]
         $Repository
@@ -20,7 +20,7 @@ function Update-LocalModule {
 
     Begin {
         if (-not (Test-IsAdmin)) {
-            throw "Admin permission required"
+            throw 'Admin permission required'
         }
     }
 
@@ -43,7 +43,7 @@ function Update-LocalModule {
                 }
                 $ProposedModule = Find-Module @ParamSet -ErrorAction SilentlyContinue
                 if (-not $ProposedModule) {
-                    Write-Verbose -Message ("module not found: {0}" -f $module.Name)
+                    Write-Verbose -Message ('module not found: {0}' -f $module.Name)
                     # continue
                 } elseif ([version]$ProposedModule.Version -gt $module.Version) {  # find-module returns version as string
                     $CallerErrorActionPreference = $ErrorActionPreference
@@ -52,12 +52,11 @@ function Update-LocalModule {
                             'Installing newer version of module {0} from repository {1}' -f $module.Name, $ProposedModule.Repository
                         )
                         Install-Module @ParamSet -Force -ErrorAction Stop
-                    }
-                    catch {
+                    } catch {
                         Write-Error -ErrorRecord $_ -ErrorAction $CallerErrorActionPreference
                     }
                 } else {
-                    Write-Verbose -Message ("module already up to date: {0}" -f $module.Name )
+                    Write-Verbose -Message ('module already up to date: {0}' -f $module.Name )
                 }
             }
         }
