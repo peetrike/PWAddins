@@ -4,6 +4,10 @@
 function Update-LocalModule {
     # .EXTERNALHELP PWAddins-help.xml
     [CmdletBinding(SupportsShouldProcess)]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSReviewUnusedParameter',
+        'Repository'
+    )]
     Param (
             [parameter(
                 ValueFromPipeline,
