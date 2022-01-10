@@ -61,6 +61,7 @@
         'Invoke-WithCulture'
         'Remove-Alias'
         'Start-AsAdmin'
+        'Start-PSv2'
         'Test-IsAdmin'
         'Update-LocalModule'
     )
