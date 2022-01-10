@@ -4,6 +4,7 @@ function Remove-Alias {
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         'PSAvoidOverwritingBuiltInCmdlets',
         '',
+        Scope = 'Function',
         Target = 'Remove-Alias'
     )]
     param (
