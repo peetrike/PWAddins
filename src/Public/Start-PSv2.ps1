@@ -1,9 +1,13 @@
 function Start-PSv2 {
     # .EXTERNALHELP PWAddins-help.xml
-    [CmdletBinding(
-        SupportsShouldProcess
-    )]
+    [CmdletBinding()]
     #[Alias('Invoke-PsV2')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions',
+        '',
+        Scope = 'Function',
+        Target = 'Start-PSv2'
+    )]
     param (
             [string[]]
         $ArgumentList,
