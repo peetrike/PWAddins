@@ -20,8 +20,8 @@ Start-PSv2 [[-ArgumentList] <String[]>] [[-WindowStyle] <ProcessWindowStyle>] [-
 
 ## DESCRIPTION
 
-This function starts PowerShell v2 engine and writes to Windows PowerShell
-event log the details about start.
+This function starts PowerShell v2 engine and adds a message
+to Windows PowerShell event log about that.
 
 ## EXAMPLES
 
