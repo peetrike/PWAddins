@@ -1,6 +1,11 @@
 function Remove-Alias {
     # .EXTERNALHELP PWAddins-help.xml
     [CmdLetBinding(SupportsShouldProcess)]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSAvoidOverwritingBuiltInCmdlets',
+        '',
+        Target = 'Remove-Alias'
+    )]
     param (
             [parameter(
                 Mandatory,
