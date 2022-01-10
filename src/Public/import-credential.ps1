@@ -16,8 +16,7 @@ function Import-Credential {
     $CallerErrorActionPreference = $ErrorActionPreference
     try {
         Import-Clixml $FilePath -ErrorAction Stop
-    }
-    catch {
+    } catch {
         Write-Error -ErrorRecord $_ -ErrorAction $CallerErrorActionPreference
     }
 }

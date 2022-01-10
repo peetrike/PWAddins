@@ -1,6 +1,12 @@
 function Remove-Alias {
     # .EXTERNALHELP PWAddins-help.xml
     [CmdLetBinding(SupportsShouldProcess)]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSAvoidOverwritingBuiltInCmdlets',
+        '',
+        Scope = 'Function',
+        Target = 'Remove-Alias'
+    )]
     param (
             [parameter(
                 Mandatory,
@@ -9,8 +15,8 @@ function Remove-Alias {
                 ValueFromPipelineByPropertyName
             )]
             [ValidateNotNullOrEmpty()]
-            [ValidateScript({
-                if (Get-Alias $_) {$true}
+            [ValidateScript( {
+                if (Get-Alias $_) { $true }
                 else {
                     throw "Alias not found: $_"
                 }

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [1.7.0] 2022-01-10
+
+### Added
+
+- Start-PSv2 - starts PowerShell v2 session and writes about that to event log
+
 ## [1.6.1] 2021-03-30
 
 ### Changed
