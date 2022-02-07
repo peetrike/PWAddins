@@ -32,7 +32,7 @@ function Start-PSv2 {
         } #>
 
         $LogMessage = @(
-            'Starting PowerShell 2 engine with parameters:'
+            'User {0} starts PowerShell 2 engine with parameters:' -f $env:USERNAME
             $ArgumentList
         ) -join [Environment]::NewLine
         [Diagnostics.EventLog]::WriteEntry(
@@ -45,10 +45,14 @@ function Start-PSv2 {
         $ProcessParams = @{
             FilePath     = 'powershell'
             WindowStyle  = $WindowStyle
-            ArgumentList = @(
+            ArgumentList = if ($ArgumentList) {
+                @(
+                    '-Version 2'
+                    $ArgumentList
+                )
+            } else {
                 '-Version 2'
-                $ArgumentList
-            )
+            }
         }
         Start-Process @ProcessParams
     }
