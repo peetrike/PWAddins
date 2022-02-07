@@ -39,7 +39,7 @@ function Start-PSv2 {
             $Provider,
             $LogMessage,
             [Diagnostics.EventLogEntryType]::Information,
-            1
+            1       # Event ID
         )
 
         $ProcessParams = @{
