@@ -1,4 +1,5 @@
 ﻿function Get-Accelerator {
+    # .EXTERNALHELP PWAddins-help.xml
     [CmdletBinding()]
     param (
             [SupportsWildcards()]
