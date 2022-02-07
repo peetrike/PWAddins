@@ -4,7 +4,7 @@
 
 @{
     RootModule        = 'PWAddins.psm1'
-    ModuleVersion     = '1.7.0'
+    ModuleVersion     = '1.7.1'
 
     GUID              = 'e2da415a-130b-4376-88d6-0d9b6cf8c807'
     Author            = 'Peter Wawa'

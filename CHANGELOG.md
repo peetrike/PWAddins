@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [1.7.1] 2022-02-07
+
+### Added
+
+- Get-Accelerator - added -Name parameter to filter results.
+
+### Fixed
+
+- Start-PSv2 - fix starting v2 session without command line parameters.
+
 ## [1.7.0] 2022-01-10
 
 ### Added
