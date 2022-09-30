@@ -1,14 +1,15 @@
 ---
 external help file: PWAddins-help.xml
 Module Name: PWAddins
-online version:
+online version: https://github.com/peetrike/PWAddins/blob/master/Docs/Get-TypeUrl.md
 schema: 2.0.0
 ---
 
 # Get-TypeUrl
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Constructs documentation URL for .NET class
 
 ## SYNTAX
 
@@ -17,21 +18,33 @@ Get-TypeUrl [[-Type] <Type>] [-Invoke] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+This function generates documentation URL for provided .NET type
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-TypeUrl -Type 'String'
 ```
 
-{{ Add example description here }}
+This example generates documentation link for `String` type.
+
+### Example 2
+
+```powershell
+(Get-Process)[0].GetType() | Get-TypeUrl -Invoke
+```
+
+This example generates documentation link for the `Get-Process` returned object
+type.
 
 ## PARAMETERS
 
 ### -Invoke
-{{ Fill Invoke Description }}
+
+Open the generated Url in browser
 
 ```yaml
 Type: SwitchParameter
@@ -46,7 +59,8 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-{{ Fill Type Description }}
+
+Specifies the type to use
 
 ```yaml
 Type: Type
@@ -67,9 +81,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Type
 
+The type to use for generating documentation link
+
 ## OUTPUTS
 
 ### System.Object
+
+The generated Url
+
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-EnumValue](Get-EnumValue.md)

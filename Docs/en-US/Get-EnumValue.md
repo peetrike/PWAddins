@@ -1,14 +1,15 @@
 ---
 external help file: PWAddins-help.xml
 Module Name: PWAddins
-online version:
+online version: https://github.com/peetrike/PWAddins/blob/master/Docs/Get-EnumValue.md
 schema: 2.0.0
 ---
 
 # Get-EnumValue
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+
+Show all enum values with both name and number
 
 ## SYNTAX
 
@@ -17,21 +18,32 @@ Get-EnumValue [[-Type] <Type>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+
+This function returns all enum values in name and number form
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-EnumValue -Type 'Management.Automation.Actionpreference'
 ```
 
-{{ Add example description here }}
+This example returns all ActionPreference enum values
+
+### Example 2
+
+```powershell
+$VerbosePreference.GetType() | Get-EnumValue
+```
+
+This example returns all enum values of `VerbosePreference` variable
 
 ## PARAMETERS
 
 ### -Type
-{{ Fill Type Description }}
+
+Specifies enum type
 
 ```yaml
 Type: Type
@@ -52,9 +64,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Type
 
+Enum type to process
+
 ## OUTPUTS
 
 ### System.Object
+
+All possible valuse of provided enum
+
 ## NOTES
 
 ## RELATED LINKS
+
+[Enum.GetValues Method](https://learn.microsoft.com/dotnet/api/system.enum.getvalues)
+
+[Get-TypeUrl](Get-TypeUrl.md)
