@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [1.8.0] 2022-02-07
+
+### Added
+
+- Get-EnumValue - returns all enum values in text and number format.
+- Get-TypeUrl - generates documentation Url for System/Microsoft namespace types
+
+### Changed
+
+- Get-HostName - returns FQDN faster.
+
 ## [1.7.1] 2022-02-07
 
 ### Added
