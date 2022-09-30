@@ -4,6 +4,14 @@
             [Parameter(
                 ValueFromPipeline
             )]
+            [ValidateScript({
+                if ($_.BaseType -eq [enum]) {
+                    $true
+                } else {
+                    throw 'Provided Type is not Enum'
+                }
+
+            })]
             [type]
         $Type
     )
