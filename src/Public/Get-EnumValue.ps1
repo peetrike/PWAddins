@@ -8,7 +8,8 @@
         $Type
     )
 
-    [enum]::GetValues($Type) |
+    process {
+        [enum]::GetValues($Type) |
         Select-Object @{
             Name       = 'Name'
             Expression = { $_ }
@@ -16,4 +17,5 @@
             Name       = 'Value'
             Expression = { $_.value__ }
         }
+    }
 }
