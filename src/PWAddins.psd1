@@ -4,12 +4,12 @@
 
 @{
     RootModule        = 'PWAddins.psm1'
-    ModuleVersion     = '1.7.1'
+    ModuleVersion     = '1.8.0'
 
     GUID              = 'e2da415a-130b-4376-88d6-0d9b6cf8c807'
     Author            = 'Peter Wawa'
     #CompanyName = 'Unknown'
-    Copyright         = '(c) 2021 Peter Wawa. All rights reserved.'
+    Copyright         = '(c) 2022 Peter Wawa. All rights reserved.'
     Description       = 'Various helper functions for everyday use'
 
     # Minimum version of the Windows PowerShell engine required by this module
