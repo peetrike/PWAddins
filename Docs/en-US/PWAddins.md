@@ -17,11 +17,17 @@ Stores credential objects in .xml file
 ### [Get-Accelerator](Get-Accelerator.md)
 Get list of defined type accelerators
 
+### [Get-EnumValue](Get-EnumValue.md)
+Show all enum values with both name and number
+
 ### [Get-HostName](Get-HostName.md)
 Returns computer name or FQDN
 
 ### [Get-OsVersion](Get-OsVersion.md)
 Returns Operating System Version
+
+### [Get-TypeUrl](Get-TypeUrl.md)
+Constructs documentation URL for .NET class
 
 ### [Import-Credential](Import-Credential.md)
 Imports previously saved credential

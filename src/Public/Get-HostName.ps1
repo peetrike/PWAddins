@@ -9,8 +9,9 @@ function Get-HostName {
         $Fqdn
     )
 
-    $HostName = [net.dns]::GetHostName()
     if ($Fqdn) {
-        ([Net.Dns]::GetHostEntry($HostName)).HostName
-    } else { $HostName }
+        ([Net.Dns]::GetHostEntry('')).HostName
+    } else {
+        [Net.Dns]::GetHostName()
+    }
 }
