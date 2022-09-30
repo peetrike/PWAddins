@@ -55,8 +55,10 @@
     FunctionsToExport = @(
         'Export-Credential'
         'Get-Accelerator'
+        'Get-EnumValue'
         'Get-HostName'
         'Get-OsVersion'
+        'Get-TypeUrl'
         'Import-Credential'
         'Invoke-WithCulture'
         'Remove-Alias'
