@@ -1,7 +1,7 @@
 ---
 external help file: PWAddins-help.xml
 Module Name: PWAddins
-online version: https://github.com/peetrike/PWAddins/blob/master/Docs/Get-TypeUrl.md
+online version: https://github.com/peetrike/PWAddins/tree/master/Docs/en-US/Get-TypeUrl.md
 schema: 2.0.0
 ---
 
