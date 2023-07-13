@@ -32,9 +32,7 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules   = @(
-        'PowerShellGet'
-    )
+    RequiredModules   = @()
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
@@ -65,7 +63,6 @@
         'Start-AsAdmin'
         'Start-PSv2'
         'Test-IsAdmin'
-        'Update-LocalModule'
     )
 
     CmdletsToExport   = @()
