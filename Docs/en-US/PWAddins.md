@@ -47,6 +47,3 @@ STart PowerShell v2 engine and write that to event log.
 ### [Test-IsAdmin](Test-IsAdmin.md)
 Tells whether the current user is an administrator.
 
-### [Update-LocalModule](Update-LocalModule.md)
-Updates local modules from Powershell repository
-

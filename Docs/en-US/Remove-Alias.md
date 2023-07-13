@@ -1,7 +1,7 @@
 ---
 external help file: PWAddins-help.xml
 Module Name: PWAddins
-online version: https://github.com/peetrike/PWAddins/blob/master/Docs/Remove-Alias.md
+online version: https://github.com/peetrike/PWAddins/tree/master/Docs/en-US/Remove-Alias.md
 schema: 2.0.0
 ---
 

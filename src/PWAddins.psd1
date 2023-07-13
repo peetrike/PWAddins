@@ -4,12 +4,12 @@
 
 @{
     RootModule        = 'PWAddins.psm1'
-    ModuleVersion     = '1.8.0'
+    ModuleVersion     = '1.8.1'
 
     GUID              = 'e2da415a-130b-4376-88d6-0d9b6cf8c807'
     Author            = 'Peter Wawa'
     #CompanyName = 'Unknown'
-    Copyright         = '(c) 2022 Peter Wawa. All rights reserved.'
+    Copyright         = '(c) 2023 Peter Wawa. All rights reserved.'
     Description       = 'Various helper functions for everyday use'
 
     # Minimum version of the Windows PowerShell engine required by this module
@@ -32,9 +32,7 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules   = @(
-        'PowerShellGet'
-    )
+    RequiredModules   = @()
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
@@ -65,7 +63,6 @@
         'Start-AsAdmin'
         'Start-PSv2'
         'Test-IsAdmin'
-        'Update-LocalModule'
     )
 
     CmdletsToExport   = @()
@@ -88,9 +85,7 @@
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
     PrivateData       = @{
         PSData = @{
-            ExternalModuleDependencies = @(
-                'PowerShellGet'
-            )
+            ExternalModuleDependencies = @()
 
             # Tags applied to this module. These help with module discovery in online galleries.
             Tags                       = @(

@@ -1,7 +1,7 @@
 ---
 external help file: PWAddins-help.xml
 Module Name: PWAddins
-online version: https://github.com/peetrike/PWAddins/blob/master/Docs/Import-Credential.md
+online version: https://github.com/peetrike/PWAddins/tree/master/Docs/en-US/Import-Credential.md
 schema: 2.0.0
 ---
 
