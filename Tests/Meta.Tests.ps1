@@ -1,5 +1,4 @@
-#Requires -Modules BuildHelpers, Pester
-
+#Requires -Modules Pester
 
 Describe 'Text files formatting' -Tags @('MetaTest') {
     BeforeAll {
@@ -10,7 +9,7 @@ Describe 'Text files formatting' -Tags @('MetaTest') {
         # Make sure MetaFixers.psm1 is loaded - it contains Get-TextFilesList
         Import-Module -Name (Join-Path -Path $PSScriptRoot -ChildPath 'MetaFixers.psm1') -Verbose:$false -Force
 
-        $allTextFiles = Get-TextFilesList $buildEnvironment.BuildOutput
+        $allTextFiles = Get-TextFilesList $OutPath
     }
 
     Context 'Files encoding' {
