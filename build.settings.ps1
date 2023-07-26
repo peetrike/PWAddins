@@ -1,4 +1,4 @@
-#Requires -Modules psake, BuildHelpers
+#Requires -Modules psake
 
 ###############################################################################
 # Customize these properties and tasks for your module.
@@ -17,16 +17,18 @@ Properties {
     # The root directories for the module's docs, src and test.
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
     $DocsRootDir = Join-Path -Path $PSScriptRoot -ChildPath "docs"
-    $SrcRootDir  = Join-Path -Path $PSScriptRoot -ChildPath "src"
+    $SrcRootDir = Join-Path -Path $PSScriptRoot -ChildPath "src"
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
     $TestRootDir = Join-Path -Path $PSScriptRoot -ChildPath "Tests"
 
+    $BuildDataFile = Join-Path -Path $SrcRootDir -ChildPath 'build.psd1'
+    $ManifestFileName = (Import-PowerShellDataFile -Path $BuildDataFile).ModuleManifest
+
     # The name of your module should match the basename of the PSD1 file.
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $ModuleName = $env:BHProjectName
+    $ModuleName = $ManifestFileName -replace '\.psd1$'
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $ManifestPath = $env:BHPSModuleManifest
+    $ManifestPath = Join-Path -Path $SrcRootDir -ChildPath $ManifestFileName
     $ModuleVersion = (Test-ModuleManifest -Path $ManifestPath -Verbose:$false).Version.ToString()
 
     # The local installation directory for the install task. Defaults to your home Modules location.
