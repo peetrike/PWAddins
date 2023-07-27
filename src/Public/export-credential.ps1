@@ -1,14 +1,15 @@
 function Export-Credential {
     # .EXTERNALHELP PWAddins-help.xml
     param (
-            [parameter(
+            [Parameter(
                 Mandatory,
                 ValueFromPipeline,
                 ValueFromPipelineByPropertyName
             )]
             [pscredential]
+            [Management.Automation.Credential()]
         $Credential,
-            [parameter(
+            [Parameter(
                 Mandatory,
                 ValueFromPipelineByPropertyName,
                 HelpMessage = 'How do you name the exported credential?'
@@ -21,7 +22,7 @@ function Export-Credential {
     )
 
     begin {
-        if (-not (Test-Path -Path $Path)) {
+        if (-not (Test-Path -Path $Path -PathType Container)) {
             $null = New-Item -Path $Path -ItemType Directory -Force
         }
     }
@@ -35,7 +36,7 @@ function Export-Credential {
 
         $CallerErrorActionPreference = $ErrorActionPreference
         try {
-            $Credential | Export-Clixml -Path $FilePath
+            $Credential | Export-Clixml -Path $FilePath -ErrorAction Stop
         } catch {
             Write-Error -ErrorRecord $_ -ErrorAction $CallerErrorActionPreference
         }
