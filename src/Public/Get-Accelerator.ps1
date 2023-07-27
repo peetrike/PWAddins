@@ -14,6 +14,6 @@
             Name = $_
             Type = if ($_ -like 'psobject') { [psobject] } else { $AcceleratorList.$_ }
         }
-        New-Object -TypeName PSObject -Property $PropList
+        [PSCustomObject] $PropList
     }
 }
