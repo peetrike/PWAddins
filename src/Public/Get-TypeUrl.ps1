@@ -1,7 +1,10 @@
 ﻿function Get-TypeUrl {
+    [OutputType([string])]
+    [OutputType([void])]
     [CmdletBinding()]
     param (
             [parameter(
+                Mandatory,
                 ValueFromPipeline,
                 ValueFromPipelineByPropertyName
             )]
