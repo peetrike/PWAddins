@@ -14,7 +14,7 @@ Imports previously saved credential
 ## SYNTAX
 
 ```
-Import-Credential [-Name] <String> [[-Path] <Object>] [<CommonParameters>]
+Import-Credential [-Name] <String> [[-Path] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +55,7 @@ Specifies the path where credentials are stored.
 By default this is subfolder under Local Application Data
 
 ```yaml
-Type: Object
+Type: String
 Parameter Sets: (All)
 Aliases:
 
