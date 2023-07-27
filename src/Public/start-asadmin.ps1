@@ -1,13 +1,13 @@
 function Start-AsAdmin {
     # .EXTERNALHELP PWAddins-help.xml
-    [CmdletBinding(SupportsShouldProcess)]
     [Alias('Invoke-AsAdmin')]
+    [CmdletBinding(SupportsShouldProcess)]
     param (
             [Parameter(
                 Mandatory,
                 HelpMessage = 'Powershell commands to be started as admin'
             )]
-            [ValidateNotNullorEmpty()]
+            [ValidateNotNullOrEmpty()]
             [String]
         $Command
             ,

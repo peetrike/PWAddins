@@ -10,7 +10,6 @@
                 } else {
                     throw 'Provided Type is not Enum'
                 }
-
             })]
             [type]
         $Type

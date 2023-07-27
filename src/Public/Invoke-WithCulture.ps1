@@ -1,24 +1,23 @@
 function Invoke-WithCulture {
     [Alias('Using-Culture')]
-    param(
-            [Parameter(Mandatory=$true)]
-            [System.Globalization.CultureInfo]
+    [CmdletBinding()]
+    param (
+            [Parameter(Mandatory)]
+            [cultureinfo]
         $Culture,
-            [Parameter(Mandatory=$true)]
-            [ScriptBlock]
+            [Parameter(Mandatory)]
+            [scriptblock]
         $ScriptBlock
     )
 
-    $OldCulture = [System.Threading.Thread]::CurrentThread.CurrentCulture
-    $OldUICulture = [System.Threading.Thread]::CurrentThread.CurrentUICulture
+    $OldCulture = [Threading.Thread]::CurrentThread.CurrentCulture
+    $OldUICulture = [Threading.Thread]::CurrentThread.CurrentUICulture
     try {
-        [System.Threading.Thread]::CurrentThread.CurrentCulture = $culture
-        [System.Threading.Thread]::CurrentThread.CurrentUICulture = $culture
-        Invoke-Command $ScriptBlock
+        [Threading.Thread]::CurrentThread.CurrentCulture = $Culture
+        [Threading.Thread]::CurrentThread.CurrentUICulture = $Culture
+        Invoke-Command -ScriptBlock $ScriptBlock
     } finally {
-        [System.Threading.Thread]::CurrentThread.CurrentCulture = $OldCulture
-        [System.Threading.Thread]::CurrentThread.CurrentUICulture = $OldUICulture
+        [Threading.Thread]::CurrentThread.CurrentCulture = $OldCulture
+        [Threading.Thread]::CurrentThread.CurrentUICulture = $OldUICulture
     }
 }
-
-Export-ModuleMember -Alias Using-Culture
