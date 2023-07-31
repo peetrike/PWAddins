@@ -1,11 +1,8 @@
-# Requires -Version 3
-# Requires -Modules CimCmdlets
 function Get-OsVersion {
     # .EXTERNALHELP PWAddins-help.xml
+    [OutputType([version])]
     [CmdletBinding()]
-    [OutputType([Version])]
-    Param()
+    param ()
 
     [Environment]::OSVersion.Version
-#    [Version] (Get-CimInstance -ClassName Win32_OperatingSystem -Property Version).Version
 }

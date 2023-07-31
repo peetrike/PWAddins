@@ -1,6 +1,5 @@
 function Start-PSv2 {
     # .EXTERNALHELP PWAddins-help.xml
-    [CmdletBinding()]
     #[Alias('Invoke-PsV2')]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         'PSUseShouldProcessForStateChangingFunctions',
@@ -8,12 +7,16 @@ function Start-PSv2 {
         Scope = 'Function',
         Target = 'Start-PSv2'
     )]
+    [CmdletBinding()]
     param (
+            [Parameter(
+                ValueFromRemainingArguments
+            )]
             [string[]]
         $ArgumentList,
             [Diagnostics.ProcessWindowStyle]
-        $WindowStyle = 'Normal'
-    )
+            $WindowStyle = [Diagnostics.ProcessWindowStyle]::Normal
+            )
 
     if ($PSVersionTable.PSVersion.Major -eq 2) {
         Write-Warning -Message 'PowerShell v2 engine is already running'
@@ -21,16 +24,8 @@ function Start-PSv2 {
         $Provider = $MyInvocation.MyCommand.ModuleName
 
         $null = Get-WinEvent -ListProvider $Provider -ErrorAction Stop
-        <# if (-not [Diagnostics.EventLog]::SourceExists($Provider)) {
-            $errorParams = @{
-                Message      = 'The provider "{0}" does not exist' -f $Provider
-                Category     = 'ObjectNotFound'
-                TargetObject = $Provider
-                RecommendedAction = 'Create provider (as admin)'
-            }
-            Write-Error @errorParams -ErrorAction Stop
-        } #>
 
+        Write-Verbose -Message ('Starting PS v2 with arguments: {0}' -f ($ArgumentList -join ' '))
         $LogMessage = @(
             'User {0} starts PowerShell 2 engine with parameters:' -f $env:USERNAME
             $ArgumentList
@@ -43,16 +38,12 @@ function Start-PSv2 {
         )
 
         $ProcessParams = @{
-            FilePath     = 'powershell'
+            FilePath     = 'powershell.exe'
             WindowStyle  = $WindowStyle
-            ArgumentList = if ($ArgumentList) {
-                @(
-                    '-Version 2'
-                    $ArgumentList
-                )
-            } else {
+            ArgumentList = @(
                 '-Version 2'
-            }
+                $ArgumentList
+            )
         }
         Start-Process @ProcessParams
     }

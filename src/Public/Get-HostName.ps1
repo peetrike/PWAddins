@@ -1,11 +1,9 @@
 function Get-HostName {
     # .EXTERNALHELP PWAddins-help.xml
+    [OutputType([string])]
     [CmdletBinding()]
-    [OutputType([String])]
-
-    Param (
+    param (
             [switch]
-            # Output FQDN
         $Fqdn
     )
 

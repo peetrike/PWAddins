@@ -1,13 +1,14 @@
 function Import-Credential {
     # .EXTERNALHELP PWAddins-help.xml
-    [OutputType('PSCredential')]
+    [OutputType([pscredential])]
     param (
-            [parameter(
+            [Parameter(
                 Mandatory
             )]
             [Alias('FileName')]
-            [String]
+            [string]
         $Name,
+            [string]
         $Path = (Join-Path -Path $env:LOCALAPPDATA -ChildPath 'Powershell')
     )
 

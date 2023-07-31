@@ -1,4 +1,4 @@
-#Requires -Modules psake, BuildHelpers
+#Requires -Modules psake
 
 ###############################################################################
 # Customize these properties and tasks for your module.
@@ -7,26 +7,26 @@
 Properties {
     # ----------------------- Basic properties --------------------------------
 
-    # The $OutDir is where module files and updatable help files are staged for signing, install and publishing.
-        [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $OutDir = Join-Path -Path $PSScriptRoot -ChildPath 'Release'
-
-    Get-ChildItem -Path env:bh* | Remove-Item
-    Set-BuildEnvironment -BuildOutput $OutDir
+    $BuildDataFile = Join-Path -Path $PSScriptRoot -ChildPath 'build.psd1'
+    $BuildInfo = Import-PowerShellDataFile -Path $BuildDataFile
+    $ManifestPath = Join-Path -Path $PSScriptRoot -ChildPath $BuildInfo.ModuleManifest
+    $ManifestFileName = Split-Path -Path $ManifestPath -Leaf
 
     # The root directories for the module's docs, src and test.
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $DocsRootDir = Join-Path -Path $PSScriptRoot -ChildPath "docs"
-    $SrcRootDir  = Join-Path -Path $PSScriptRoot -ChildPath "src"
+    $DocsRootDir = Join-Path -Path $PSScriptRoot -ChildPath 'docs'
+    $SrcRootDir = Split-Path -Path $ManifestPath -Parent
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $TestRootDir = Join-Path -Path $PSScriptRoot -ChildPath "Tests"
+    $TestRootDir = Join-Path -Path $PSScriptRoot -ChildPath 'Tests'
+
+    # The $OutDir is where module files and updatable help files are staged for signing, install and publishing.
+        [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
+    $OutDir = Join-Path -Path $SrcRootDir -ChildPath $BuildInfo.OutputDirectory
 
     # The name of your module should match the basename of the PSD1 file.
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $ModuleName = $env:BHProjectName
+    $ModuleName = (Get-Item -Path $ManifestPath).BaseName
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
-    $ManifestPath = $env:BHPSModuleManifest
     $ModuleVersion = (Test-ModuleManifest -Path $ManifestPath -Verbose:$false).Version.ToString()
 
     # The local installation directory for the install task. Defaults to your home Modules location.

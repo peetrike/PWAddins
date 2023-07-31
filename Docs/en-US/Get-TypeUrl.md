@@ -14,7 +14,7 @@ Constructs documentation URL for .NET class
 ## SYNTAX
 
 ```
-Get-TypeUrl [[-Type] <Type>] [-Invoke] [<CommonParameters>]
+Get-TypeUrl [-Type] <Type> [-Invoke] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +67,7 @@ Type: Type
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)

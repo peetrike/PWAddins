@@ -8,7 +8,7 @@ function Remove-Alias {
         Target = 'Remove-Alias'
     )]
     param (
-            [parameter(
+            [Parameter(
                 Mandatory,
                 Position = 0,
                 ValueFromPipeline,
