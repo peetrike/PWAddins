@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [1.8.2] 2023-07-31
+
+### Changed
+
+- Export-Credential: -Credential now accepts string as username
+- Get-TypeUrl: -Type is now mandatory parameter
+- Import-Credential: -Name is now mandatory
+- Start-PSv2: now takes -ArgumentList values from other arguments on command line
+
 ## [1.8.1] 2023-07-13
 
 ### Removed
