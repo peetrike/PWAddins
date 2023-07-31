@@ -10,6 +10,7 @@ Properties {
     $BuildDataFile = Join-Path -Path $PSScriptRoot -ChildPath 'build.psd1'
     $BuildInfo = Import-PowerShellDataFile -Path $BuildDataFile
     $ManifestPath = Join-Path -Path $PSScriptRoot -ChildPath $BuildInfo.ModuleManifest
+    $ManifestFileName = Split-Path -Path $ManifestPath -Leaf
 
     # The root directories for the module's docs, src and test.
         [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '')]
