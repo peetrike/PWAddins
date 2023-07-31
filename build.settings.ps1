@@ -6,6 +6,7 @@
 
 Properties {
     # ----------------------- Basic properties --------------------------------
+
     $BuildDataFile = Join-Path -Path $PSScriptRoot -ChildPath 'build.psd1'
     $BuildInfo = Import-PowerShellDataFile -Path $BuildDataFile
     $ManifestPath = Join-Path -Path $PSScriptRoot -ChildPath $BuildInfo.ModuleManifest
