@@ -7,14 +7,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [1.8.3] 2023-10-31
+
+### Added
+
+- Invoke-WithCulture: added argument completer to **-Culture** parameter
+
 ## [1.8.2] 2023-07-31
 
 ### Changed
 
-- Export-Credential: -Credential now accepts string as username
-- Get-TypeUrl: -Type is now mandatory parameter
-- Import-Credential: -Name is now mandatory
-- Start-PSv2: now takes -ArgumentList values from other arguments on command line
+- Export-Credential: **-Credential** now accepts string as username
+- Get-TypeUrl: **-Type** is now mandatory parameter
+- Import-Credential: **-Name** is now mandatory
+- Start-PSv2: now takes **-ArgumentList** values from other arguments on
+  command line
 
 ## [1.8.1] 2023-07-13
 
@@ -35,9 +42,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.7.1] 2022-02-07
 
-### Added
+### Changed
 
-- Get-Accelerator - added -Name parameter to filter results.
+- Get-Accelerator - added **-Name** parameter to filter results.
 
 ### Fixed
 
@@ -59,7 +66,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Start-AsAdmin - changed parameter -WindowStyle type to _ProcessWindowStyle_
+- Start-AsAdmin - changed parameter **-WindowStyle** type to _ProcessWindowStyle_
 - Remove-Alias - with `pwsh` use built-in cmdlet instead `Remove-Item`
 
 ## [1.5.0] 2021-01-05
@@ -73,12 +80,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Get-Accelerator
 - Get-HostName
 - Invoke-WithCulture
-- Modified TypeData and FormatData for HistoryInfo
+
+### Changed
+
+- Modified _TypeData_ and _FormatData_ for HistoryInfo
 
 ### Changed
 
 - Start-AsAdmin
-  - now supports -Whatif and -Confirm
+  - now supports **-Whatif** and **-Confirm**
   - now in PowerShell 7 starts `pwsh` as admin
 
 ## [1.4.1] 2018-07-27
@@ -103,14 +113,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
-- fixed Update-LocalModule
-  - Update-LocalModule didn't force install from repository already existing local modules
+- Update-LocalModule: didn't force install from repository already existing local modules
 
 ## [1.3.1] 2018-07-09
 
 ### Changed
 
-- changed Update-Localmodule
+- Update-Localmodule
 
 ### Fixed
 
@@ -120,13 +129,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Added Update-LocalModule
+- Update-LocalModule
 
 ## [1.2.0] 2018-07-05
 
 ### Added
 
-- added Get-OsVersion
+- Get-OsVersion
 
 ### Changed
 

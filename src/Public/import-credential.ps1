@@ -1,6 +1,7 @@
 function Import-Credential {
     # .EXTERNALHELP PWAddins-help.xml
     [OutputType([pscredential])]
+    [CmdletBinding()]
     param (
             [Parameter(
                 Mandatory

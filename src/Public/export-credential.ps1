@@ -1,5 +1,6 @@
 function Export-Credential {
     # .EXTERNALHELP PWAddins-help.xml
+    [CmdletBinding()]
     param (
             [Parameter(
                 Mandatory,

@@ -22,7 +22,7 @@ function Remove-Alias {
                 }
             })]
             [SupportsWildcards()]
-            [String[]]
+            [string[]]
         $Name,
             [switch]
         $Force,
