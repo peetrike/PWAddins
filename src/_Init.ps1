@@ -11,3 +11,34 @@
         Update-FormatData -PrependPath ($FileNamePart + '.format.ps1xml')
     }
 }
+
+if (Get-Command Register-ArgumentCompleter -ErrorAction SilentlyContinue) {
+    $CompleterSB = {
+        param (
+                [string]
+            $commandName,
+                [string]
+            $parameterName,
+                [string]
+            $wordToComplete,
+                [Management.Automation.Language.CommandAst]
+            $commandAst,
+                [Collections.IDictionary]
+            $fakeBoundParameters
+        )
+
+        $word = [regex]::Escape($wordToComplete)
+        $cultureList = [cultureinfo]::GetCultures([Globalization.CultureTypes]::SpecificCultures) |
+            Where-Object { $_.Name -match $word -or $_.DisplayName -match $word }
+
+        foreach ($culture in $cultureList) {
+                [Management.Automation.CompletionResult]::new(
+                    $culture.Name,                                                      # completionText
+                    [string]::Format('{0}, {1}', $culture.Name, $culture.DisplayName),  # listItemText
+                    [Management.Automation.CompletionResultType]::ParameterValue,       # resultType
+                    $culture.DisplayName                                                # toolTip
+                )
+            }
+    }
+    Register-ArgumentCompleter -CommandName Invoke-WithCulture -ParameterName Culture -ScriptBlock $CompleterSB
+}
