@@ -15,8 +15,8 @@ function Start-PSv2 {
             [string[]]
         $ArgumentList,
             [Diagnostics.ProcessWindowStyle]
-            $WindowStyle = [Diagnostics.ProcessWindowStyle]::Normal
-            )
+        $WindowStyle = [Diagnostics.ProcessWindowStyle]::Normal
+    )
 
     if ($PSVersionTable.PSVersion.Major -eq 2) {
         Write-Warning -Message 'PowerShell v2 engine is already running'
