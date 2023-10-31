@@ -9,10 +9,9 @@ function Start-AsAdmin {
             )]
             [ValidateNotNullOrEmpty()]
             [String]
-        $Command
-            ,
+        $Command,
             [Diagnostics.ProcessWindowStyle]
-        $WindowStyle = 'Hidden'
+        $WindowStyle = [Diagnostics.ProcessWindowStyle]::Hidden
     )
 
     $commandBytes = [Text.Encoding]::Unicode.GetBytes($Command)
