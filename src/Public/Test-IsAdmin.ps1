@@ -3,7 +3,7 @@
     [Alias('Test-IsAdministrator')]
     [OutputType([Boolean])]
     [CmdletBinding()]
-    param()
+    param ()
 
     $currentUser = [Security.Principal.WindowsIdentity]::GetCurrent()
     ([Security.Principal.WindowsPrincipal] $currentUser).IsInRole(
