@@ -66,3 +66,7 @@ Computer name or FQDN
 ## NOTES
 
 ## RELATED LINKS
+
+[DNS.GetHostEntry Method](https://learn.microsoft.com/dotnet/api/system.net.dns.gethostentry)
+
+[DNS.GetHostName Method](https://learn.microsoft.com/dotnet/api/system.net.dns.gethostname)
