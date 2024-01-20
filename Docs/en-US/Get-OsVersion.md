@@ -50,11 +50,11 @@ The version returned might sometimes be incorrect. Starting with Windows 8,
 the returned version has the same major and minor version numbers for all
 Windows platforms, unless te application is aware of newer windows versions and
 it declares that on app manifest (look at
-[Windows version check](https://docs.microsoft.com/windows/compatibility/windows-version-check)).
+[Windows version check](https://learn.microsoft.com/windows/compatibility/windows-version-check)).
 And Powershell sometimes qualifies, sometimes not.
 
 ## RELATED LINKS
 
-[Environment.OSVersion Property](https://docs.microsoft.com/dotnet/api/system.environment.osversion)
+[Environment.OSVersion Property](https://learn.microsoft.com/dotnet/api/system.environment.osversion)
 
-[Win32_OperatingSystem class](https://docs.microsoft.com/windows/desktop/CIMWin32Prov/win32-operatingsystem)
+[Win32_OperatingSystem class](https://learn.microsoft.com/windows/desktop/CIMWin32Prov/win32-operatingsystem)

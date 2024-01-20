@@ -96,7 +96,7 @@ Accept wildcard characters: True
 ### -Scope
 
 Affects only the aliases in the specified scope. The default scope is Local.
-For more information, see [about_Scopes](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scopes).
+For more information, see [about_Scopes](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scopes).
 
 The acceptable values for this parameter are:
 
@@ -154,8 +154,8 @@ This function is not required for PowerShell 7
 
 ## RELATED LINKS
 
-[Get-Alias](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-alias)
+[Get-Alias](https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/get-alias)
 
-[New-Alias](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/new-alias)
+[New-Alias](https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/new-alias)
 
-[Set-Alias](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/set-alias)
+[Set-Alias](https://learn.microsoft.com/powershell/module/microsoft.powershell.utility/set-alias)

@@ -83,6 +83,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Export-Credential](Export-Credential.md)
 
-[Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential)
+[Get-Credential](https://learn.microsoft.com/powershell/module/microsoft.powershell.security/get-credential)
 
 [Securely Store Credentials on Disk](http://www.powershellcookbook.com/recipe/PukO/securely-store-credentials-on-disk)
