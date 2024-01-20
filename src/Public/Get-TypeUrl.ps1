@@ -20,7 +20,7 @@
         }
         $FullName = $Type.FullName
         if ($FullName -match '^(System|Microsoft)') {
-            $Url = 'https://docs.microsoft.com/dotnet/api/{0}' -f $FullName
+            $Url = 'https://learn.microsoft.com/dotnet/api/{0}' -f $FullName
             if ($Invoke.IsPresent) {
                 Start-Process -FilePath $Url
             } else { $Url }
