@@ -41,15 +41,19 @@ This command tests if administrative privileges are available.
 ### EXAMPLE 2
 
 ```powershell
-PS C:\> function prompt {
-          if (Test-IsAdmin) { '\[ADMIN\]: ' }
-          else {
-            $(if (test-path variable:/PSDebugContext) { '\[DBG\]: ' }
-              else { '' }) + 'PS ' + $(Get-Location) + $(if ($nestedpromptlevel -ge 1) { '\>\>' }) + '\> '
+function prompt {
+    @(
+        if (Test-IsAdmin) { '[ADMIN]: ' }
+        if (Test-Path variable:/PSDebugContext) { '[DBG]: ' }
+        'PS '
+        $PWD
+        '>' * $nestedpromptlevel
+        ' '
+    ) -join ''
 }
 ```
 
-This prompt uses the Test-IsAdministrator function to change the prompt when the user is an administrator.
+This prompt uses the Test-IsAdmin function to change the prompt when the user is an administrator.
 
 ## PARAMETERS
 
