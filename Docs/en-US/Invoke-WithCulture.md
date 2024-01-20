@@ -24,6 +24,7 @@ This function runs given scriptblock using specified culture context.
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 Invoke-WithCulture -Culture 'de-de' -ScriptBlock { Get-Date}
 ```
