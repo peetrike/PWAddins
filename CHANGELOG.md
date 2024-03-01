@@ -7,11 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [1.9.0] 2024-03-01
+
+### Changed
+
+- Get-OsVersion: added **-Type** parameter
+
 ## [1.8.4] 2024-01-20
 
 ### Changed
 
-- Get-TypeUrl: changed .NET documetation base url
+- Get-TypeUrl: changed .NET documentation base url
 
 ## [1.8.3] 2023-10-31
 
