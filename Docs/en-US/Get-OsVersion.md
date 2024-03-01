@@ -14,12 +14,13 @@ Returns Operating System Version
 ## SYNTAX
 
 ```
-Get-OsVersion [<CommonParameters>]
+Get-OsVersion [[-Type] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 
-This function returns Windows version as [Ssytem.Version] object.
+This function returns Windows version.  The output type depends on _-Type_ parameter.
+The information is obtainer from registry and using **Environment** class.
 
 ## EXAMPLES
 
@@ -31,7 +32,32 @@ Get-OsVersion
 
 Returns OS version
 
+### Example 2
+
+```powershell
+Get-OsVersion -Type Object
+```
+
+Returns OS version information as custom object.
+
 ## PARAMETERS
+
+### -Type
+
+Specifies output type
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Object, String, Version
+
+Required: False
+Position: 0
+Default value: Version
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -40,9 +66,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
+This function has no input
+
 ## OUTPUTS
 
 ### System.Version
+
+OS version as **Version**
+
+### String
+
+OS version as string.  Tries to resemble version as `winver.exe` shows
+
+### PWAddins.OSVersion
+
+Custom object containing information about OS version
 
 ## NOTES
 
