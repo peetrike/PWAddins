@@ -1,4 +1,4 @@
-﻿#Requires -Modules psake, BuildHelpers, PWBuild
+﻿#Requires -Modules psake, PWBuild
 
 ##############################################################################
 # This is the PowerShell Module psake build script. It inherits the following
@@ -58,6 +58,6 @@ Include $PSScriptRoot\build.settings.ps1
 ###############################################################################
 # Core task implementations.
 ###############################################################################
-Task default -depends Build
+Task default -Depends Build
 
 Task Build -FromModule PWBuild
