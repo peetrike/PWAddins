@@ -1,8 +1,15 @@
-﻿#Requires -Modules BuildHelpers, Pester
+﻿#Requires -Modules Pester
 
-[Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '', Scope='*', Target='SuppressImportModule')]
-$SuppressImportModule = $false
-. $PSScriptRoot\Shared.ps1
+BeforeDiscovery {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        'PSUseDeclaredVarsMoreThanAssignments',
+        '',
+        Scope = '*',
+        Target = 'SuppressImportModule'
+    )]
+    $SuppressImportModule = $true
+    . $PSScriptRoot\Shared.ps1
+}
 
 # Taken with love from @juneb_get_help (https://github.com/juneb/PesterTDD/blob/master/Module.Help.Tests.ps1)
 
@@ -10,28 +17,35 @@ Describe "Help for module $moduleName" {
     ## When testing help, remember that help is cached at the beginning of each session.
     ## To test, restart session.
 
-    foreach ($command in Get-Command -Module $moduleName -CommandType Cmdlet, Function) { # Workflow not supported on PS7
-        $commandName = $command.Name
-
-        Describe "Command $commandName" -Tags @('MetaTest', $commandName) {
-            # The module-qualified command fails on Microsoft.PowerShell.Archive cmdlets
-            $help = Get-Help -Name $commandName -ErrorAction SilentlyContinue
-
-            It 'should not be auto-generated' -TestCases @{
-                commandName = $commandName
-                help = $help
-            } {
-                # If help is not found, synopsis in auto-generated help is the syntax diagram
-                $help.Synopsis.TrimStart() |
-                    Should -Not -BeLike "$commandName *" -Because 'command should have synopsis'
+    BeforeDiscovery {
+            # Workflow not supported on PS7
+        $CommandList = foreach ($command in Get-Command -Module $moduleName -CommandType Cmdlet, Function) {
+            @{
+                CommandName = $command.Name
             }
+        }
+    }
 
-            It 'has description' -TestCases @{ help = $help } {
-                $help.Description |
-                    Should -Not -BeNullOrEmpty -Because 'Command should have a description'
-            }
+    Describe '<CommandName>' -ForEach $CommandList -Tags @('MetaTest') {
+        BeforeDiscovery {
+            $help = Get-Help -Name $CommandName -ErrorAction SilentlyContinue
+        }
 
-            Context "Examples" {
+        # The module-qualified command fails on Microsoft.PowerShell.Archive cmdlets
+
+        It 'should not be auto-generated' -TestCases @{ Synopsis = $help.Synopsis } {
+            # If help is not found, synopsis in auto-generated help is the syntax diagram
+            $Synopsis.TrimStart() |
+                Should -Not -BeLike "$CommandName *" -Because 'command should have synopsis'
+        }
+
+        It 'has description' -TestCases @{ help = $help } {
+            $help.Description |
+                Should -Not -BeNullOrEmpty -Because 'Command should have a description'
+        }
+
+        Context 'Examples' {
+            BeforeDiscovery {
                 $Examples = foreach ($example in $help.Examples.example) {
                     @{
                         code    = $example.code
@@ -39,81 +53,81 @@ Describe "Help for module $moduleName" {
                         title   = $example.title
                     }
                 }
-                It "has at least one example" -TestCases @{ Examples = $Examples } {
-                    $Examples.code |
-                        Should -Not -BeNullOrEmpty -Because 'Every command should have an example'
-                }
-
-                if ($Examples) {
-                    It 'Example has code: <title>' -TestCases $Examples {
-                        $code | Should -Not -BeNullOrEmpty
-                    }
-                    It 'Example has description: <title>' -TestCases $Examples {
-                        $remarks<# .text #> |
-                            Should -Not -BeNullOrEmpty -Because 'every example should be described'
-                    }
-                }
+            }
+            It "$CommandName has at least one example" -TestCases @{ help = $help } {
+                $help.Examples.example.code |
+                    Should -Not -BeNullOrEmpty -Because 'Every command should have an example'
             }
 
-            Context "Parameters" {
-                $common = 'Debug', 'ErrorAction', 'ErrorVariable', 'InformationAction', 'InformationVariable',
-                'OutBuffer', 'OutVariable', 'PipelineVariable', 'Verbose', 'WarningAction', 'WarningVariable',
-                'Confirm', 'Whatif'
+            Context '<title>' -ForEach $Examples {
+                It 'has code' {
+                    $code | Should -Not -BeNullOrEmpty
+                }
+                It 'has description' {
+                    $remarks<# .text #> |
+                        Should -Not -BeNullOrEmpty -Because 'every example should be described'
+                }
+            }
+        }
+
+        Context 'Parameters' {
+            BeforeDiscovery {
+                $common = @(
+                    [Management.Automation.PSCmdlet]::CommonParameters
+                    [Management.Automation.PSCmdlet]::OptionalCommonParameters
+                )
 
                 # Without the filter, WhatIf and Confirm parameters are still flagged in "finds help parameter in code" test
                 $helpParameters = $help.parameters.parameter |
                     Where-Object Name -NotIn $common |
                     Sort-Object -Property Name -Unique
-                $parameters = $command.ParameterSets.Parameters |
+                $parameters = (Get-Command $commandName).ParameterSets.Parameters |
                     Where-Object Name -NotIn $common |
                     Sort-Object -Property Name -Unique
 
-                It "all parameters have help topic" -TestCases @{
-                    helpParameters = $helpParameters
-                    parameters     = $parameters
-                } {
-                    @($helpParameters).Count |
-                        Should -Be @($parameters).Count -Because 'The number of parameters in the help should match the number in the command'
-                }
-
-                foreach ($parameter in $parameters) {
-                    $parameterName = $parameter.Name
-                    Context "Parameter $parameterName" {
-                        #BeforeEach {
-                            $codeMandatory = $parameter.IsMandatory.toString()
-                            $parameterHelp = $helpParameters | Where-Object Name -EQ $parameterName
-                            $codeType = $parameter.ParameterType.Name
-                            $helpType = if ($parameterHelp.parameterValue) { $parameterHelp.parameterValue.Trim() }
-                        #}
-
-                        It "has help description" -TestCases @{
-                            parameterHelp = $parameterHelp
-                        } {
-                            $parameterHelp.Description.Text |
-                                Should -Not -BeNullOrEmpty -Because 'Every parameter should have a description'
-                        }
-
-                        # Required value in Help should match IsMandatory property of parameter
-                        It "has correct Mandatory value" -TestCases @{
-                            parameterHelp = $parameterHelp
-                            codeMandatory = $codeMandatory
-                        } {
-                            $parameterHelp.Required | Should -Be $codeMandatory
-                        }
-
-                        # Parameter type in Help should match code
-                        It "has correct parameter type" -TestCases @{
-                            helpType = $helpType
-                            codeType = $codeType
-                        } {
-                                # To avoid calling Trim method on a null object.
-                            $helpType | Should -Be $codeType
-                        }
+                $ParameterList = foreach ($parameter in $parameters) {
+                    @{
+                        parameterName = $parameter.Name
+                        parameter     = $parameter
+                        parameterHelp = $helpParameters | Where-Object Name -EQ $parameter.Name
                     }
                 }
             }
 
-            Context "Help Links for $commandName" {
+            It 'all parameters have help topic' -TestCases @{
+                helpParameters = $helpParameters
+                parameters     = $parameters
+            } {
+                $Because = 'The number of parameters in the help should match the number in the command'
+                @($helpParameters).Count |
+                    Should -Be @($parameters).Count -Because $Because
+            }
+
+            Context 'Parameter <parameterName>' -ForEach $ParameterList {
+                It 'has help description' {
+                    $parameterHelp.Description.Text |
+                        Should -Not -BeNullOrEmpty -Because 'Every parameter should have a description'
+                }
+
+                # Required value in Help should match IsMandatory property of parameter
+                It 'has correct Mandatory value' {
+                    $codeMandatory = $parameter.IsMandatory.toString()
+                    $parameterHelp.Required | Should -Be $codeMandatory
+                }
+
+                # Parameter type in Help should match code
+                It 'has correct parameter type' {
+                    $codeType = $parameter.ParameterType.Name
+                    $helpType = if ($parameterHelp.parameterValue) { $parameterHelp.parameterValue.Trim() }
+
+                        # To avoid calling Trim method on a null object.
+                    $helpType | Should -Be $codeType
+                }
+            }
+        }
+
+        Context 'Help Links' {
+            BeforeDiscovery {
                 $links = $help.relatedLinks.navigationLink |
                     Where-Object uri |
                     ForEach-Object {
@@ -122,13 +136,11 @@ Describe "Help for module $moduleName" {
                             uri      = $_.uri
                         }
                     }
-                if ($links) {
-                    It 'Link is available online - <linkText>' -TestCases $links {
-                        $Result = Invoke-WebRequest -Uri $uri -UseBasicParsing
-                        $Result.StatusCode |
-                            Should -Be '200' -Because 'URL should respond'
-                    }
-                }
+            }
+            It 'Link is available online - <linkText>' -TestCases $links {
+                $Result = Invoke-WebRequest -Uri $uri -UseBasicParsing
+                $Result.StatusCode |
+                    Should -Be '200' -Because 'URL should respond'
             }
         }
     }
