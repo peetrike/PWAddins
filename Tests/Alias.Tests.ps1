@@ -1,40 +1,43 @@
-#Requires -Modules BuildHelpers, Pester
+﻿#Requires -Modules Pester
 
-[System.Diagnostics.CodeAnalysis.SuppressMessage(
-    'PSUseDeclaredVarsMoreThanAssigments', '', Scope='*', Target='SuppressImportModule'
-)]
-$SuppressImportModule = $false
-. $PSScriptRoot\Shared.ps1
+BeforeDiscovery {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        'PSUseDeclaredVarsMoreThanAssignments',
+        '',
+        Scope = '*',
+        Target = 'SuppressImportModule'
+    )]
+    $SuppressImportModule = $false
+    . $PSScriptRoot\Shared.ps1
 
-$RequiredVersion = (Get-Module $ModuleName).Version
+    $ModuleInfo = Get-Module $ModuleName
 
-if ($ExportedAliases = (Get-Module $ModuleName).ExportedAliases.Values.Name) {
-    foreach ($ExportedAlias in $ExportedAliases) {
-        $AliasInSession = Get-Alias $ExportedAlias -ErrorAction SilentlyContinue
-
-        Describe "Testing exported alias $ExportedAlias" -Tags @('MetaTest') {
-            It "Get-Alias should not error out" -TestCases @{
-                ExportedAlias  = $ExportedAlias
-                AliasinSession = $AliasInSession
-            } {
-                $AliasInSession | Should -Not -BeNullOrEmpty
-            }
-
-            It "Get-Alias should find alias in session" -TestCases @{
-                ExportedAlias  = $ExportedAlias
-                AliasinSession = $AliasInSession
-            } {
-                $AliasInSession.Name | Should -Be $ExportedAlias
-            }
-
-            It "Get-Alias should find value" -TestCases @{
-                ExportedAlias  = $ExportedAlias
-                AliasinSession = $AliasInSession
-            } {
-                $AliasInSession.ResolvedCommandName -or $AliasInSession.Definition | Should -Be $True
-            }
+    $ExportedAlias = foreach ($alias in $ModuleInfo.ExportedAliases.Values) {
+        @{
+            Name = $alias.Name
         }
     }
-} else {
-    Write-Host "Aliases.Tests.ps1:  $ModuleName ($RequiredVersion) does not export any aliases."
+    if (-not $ExportedAlias) {
+        $scriptName = Split-Path -Path $PSScriptRoot -Leaf
+        Write-Warning -Message ("{0}: Module {1} ({2}) does not export any aliases." -f $scriptName, $ModuleInfo.Name, $ModuleInfo.Version)
+    }
+}
+
+Describe "Exported aliases for module $ModuleName" -Tags @('MetaTest') {
+    Context 'Alias "<name>"' -Foreach $ExportedAlias {
+        BeforeEach {
+            $aliasToTest = Get-Alias $name -ErrorAction SilentlyContinue
+        }
+        It 'Exists' {
+            $aliasToTest | Should -Not -BeNullOrEmpty
+        }
+
+        It 'Has exported name' {
+            $aliasToTest.Name | Should -Be $Name
+        }
+
+        It 'Has value' {
+            $aliasToTest.ResolvedCommandName -or $aliasToTest.Definition | Should -Be $True
+        }
+    }
 }

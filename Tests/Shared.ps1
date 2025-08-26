@@ -3,10 +3,15 @@
 $projectRoot = Split-Path -Path $PSScriptRoot -Parent
 $OutPath = Join-Path -Path $projectRoot -ChildPath 'Release'
 $moduleName = Split-Path -Path $projectRoot -Leaf
-    [System.Diagnostics.CodeAnalysis.SuppressMessage('PSUseDeclaredVarsMoreThanAssigments', '', Scope='*', Target='SuppressImportModule')]
-$manifestPath = ("{0}\{1}\{1}.psd1" -f $OutPath, $moduleName)
+    [Diagnostics.CodeAnalysis.SuppressMessage(
+        'PSUseDeclaredVarsMoreThanAssignments',
+        '',
+        Scope = '*',
+        Target = 'SuppressImportModule'
+    )]
+$manifestPath = ('{0}\{1}\{1}.psd1' -f $OutPath, $moduleName)
 
-if (!$SuppressImportModule) {
+if (-not $SuppressImportModule) {
     # Remove all versions of the module from the session. Pester can't handle multiple versions.
     Get-Module $moduleName | Remove-Module -Force
 

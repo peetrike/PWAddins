@@ -41,6 +41,9 @@ Remove an alias from the shell
 ### [Start-AsAdmin](Start-AsAdmin.md)
 Starts given PowerShell commands in elevated Powershell
 
+### [Start-PSContainer](Start-PSContainer.md)
+Starts container from PowerShell image
+
 ### [Start-PSv2](Start-PSv2.md)
 STart PowerShell v2 engine and write that to event log.
 
