@@ -42,16 +42,17 @@ function Get-TextFilesList {
         [Parameter(Mandatory = $true)]
         [string]$root
     )
-    Get-ChildItem -File -Recurse $root | Where-Object { @('.gitignore', '.gitattributes', '.ps1', '.psm1', '.psd1', '.json', '.xml', '.cmd', '.mof') -contains $_.Extension }
+    $ExtensionList = @('.gitignore', '.gitattributes', '.ps1', '.psm1', '.psd1', '.json', '.xml', '.cmd', '.mof')
+    Get-ChildItem -File -Recurse $root | Where-Object { $ExtensionList -contains $_.Extension }
 }
 
 function Test-FileUnicode {
-
     [CmdletBinding()]
     [OutputType([bool])]
     param(
         [Parameter(ValueFromPipeline = $true, Mandatory = $true)]
-        [System.IO.FileInfo]$fileInfo
+        [System.IO.FileInfo]
+        $fileInfo
     )
 
     process {
