@@ -1,6 +1,6 @@
 function Start-PSv2 {
     # .EXTERNALHELP PWAddins-help.xml
-    #[Alias('Invoke-PsV2')]
+    [Alias('Invoke-PsV2')]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         'PSUseShouldProcessForStateChangingFunctions',
         '',
@@ -26,15 +26,10 @@ function Start-PSv2 {
         $null = Get-WinEvent -ListProvider $Provider -ErrorAction Stop
 
         Write-Verbose -Message ('Starting PS v2 with arguments: {0}' -f ($ArgumentList -join ' '))
-        $LogMessage = @(
-            'User {0} starts PowerShell 2 engine with parameters:' -f $env:USERNAME
+        $Message = 'User {0} starts PowerShell 2 engine with parameters: {1}'
+        Write-LogEvent -Source $Provider -Message $message -Data @(
+            [Security.Principal.WindowsIdentity]::GetCurrent().Name
             $ArgumentList
-        ) -join [Environment]::NewLine
-        [Diagnostics.EventLog]::WriteEntry(
-            $Provider,
-            $LogMessage,
-            [Diagnostics.EventLogEntryType]::Information,
-            1       # Event ID
         )
 
         $ProcessParams = @{
