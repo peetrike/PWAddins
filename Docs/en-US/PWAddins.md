@@ -47,9 +47,6 @@ Starts container from PowerShell image
 ### [Start-PSv2](Start-PSv2.md)
 STart PowerShell v2 engine and write that to event log.
 
-### [Test-IsAdmin](Test-IsAdmin.md)
-Tells whether the current user is an administrator.
-
 ### [Write-LogEvent](Write-LogEvent.md)
 Writes event log entry
 
