@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [1.12.0] 2026-05-29
+
+### Removed
+
+- Test-IsAdmin: moved to module windows.identity
+
 ## [1.11.0] 2025-10-14
 
 ### Added
