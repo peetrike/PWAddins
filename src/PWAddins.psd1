@@ -9,11 +9,11 @@
     GUID              = 'e2da415a-130b-4376-88d6-0d9b6cf8c807'
     Author            = 'Peter Wawa'
     #CompanyName = 'Unknown'
-    Copyright         = '(c) 2025 Peter Wawa. All rights reserved.'
+    Copyright         = '(c) 2026 Peter Wawa. All rights reserved.'
     Description       = 'Various helper functions for everyday use'
 
     # Minimum version of the Windows PowerShell engine required by this module
-    PowerShellVersion = '3.0'
+    PowerShellVersion = '5.0'
     # CompatiblePSEditions = @('Desktop','Core')
 
     # Name of the Windows PowerShell host required by this module

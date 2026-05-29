@@ -102,7 +102,7 @@
             # https://learn.microsoft.com/powershell/utility-modules/psscriptanalyzer/rules/UseCompatibleCmdlets
             Compatibility = @(
                 #'desktop-2.0-windows'
-                'desktop-3.0-windows'
+                #'desktop-3.0-windows'
                 #'desktop-4.0-windows'
                 'desktop-5.1.14393.206-windows'
                 'core-6.1.0-windows'
@@ -115,7 +115,7 @@
             Enable         = $true
             # https://learn.microsoft.com/powershell/utility-modules/psscriptanalyzer/rules/UseCompatibleCommands
             TargetProfiles = @(
-                'win-8_x64_6.2.9200.0_3.0_x64_4.0.30319.42000_framework' # Server 2012
+                #'win-8_x64_6.2.9200.0_3.0_x64_4.0.30319.42000_framework' # Server 2012
                 #'win-8_x64_6.3.9600.0_4.0_x64_4.0.30319.42000_framework' # Server 2012 R2
                 #'win-8_x64_10.0.14393.0_5.1.14393.2791_x64_4.0.30319.42000_framework' # Server 2016
                 #'win-8_x64_10.0.17763.0_5.1.17763.316_x64_4.0.30319.42000_framework' # Server 2019
@@ -135,9 +135,9 @@
             Enable           = $true
             # https://learn.microsoft.com/powershell/utility-modules/psscriptanalyzer/rules/UseCompatibleSyntax
             TargetedVersions = @(
-                '6.0'
+                '7.0'
                 '5.1'
-                '3.0'
+                #'3.0'
             )
         }
 
@@ -145,7 +145,7 @@
             # https://learn.microsoft.com/powershell/utility-modules/psscriptanalyzer/rules/UseCompatibleTypes
             Enable         = $true
             TargetProfiles = @(
-                'win-8_x64_6.2.9200.0_3.0_x64_4.0.30319.42000_framework' # Server 2012
+                #'win-8_x64_6.2.9200.0_3.0_x64_4.0.30319.42000_framework' # Server 2012
                 #'win-8_x64_6.3.9600.0_4.0_x64_4.0.30319.42000_framework' # Server 2012 R2
                 #'win-8_x64_10.0.14393.0_5.1.14393.2791_x64_4.0.30319.42000_framework' # Server 2016
                 #'win-8_x64_10.0.17763.0_5.1.17763.316_x64_4.0.30319.42000_framework' # Server 2019
