@@ -65,14 +65,12 @@
         'Remove-Alias'
         'Start-AsAdmin'
         'Start-PSv2'
-        'Test-IsAdmin'
     )
 
     CmdletsToExport   = @()
     VariablesToExport = @()
     AliasesToExport   = @(
         'Invoke-AsAdmin'
-        'Test-IsAdministrator'
         'Using-Culture'
     )
 
